@@ -1,6 +1,36 @@
 <main class="main">
   <div class="content">
-    <h1>Hello world, created branch</h1>
+    <h1>{{title}}</h1>
+
+    <h2>Change Detection</h2>
+    <p>Il template di un componente, viene automaticamente renderizzato quando si verificano 3 scenari:</p>
+
+    <ul>
+
+      <li>Eventi Mouse e tastiera</li>
+      <li>Api lato server Rest APi</li>
+      <li>Timer</li>
+    </ul>
+
+    <hr>
+
+    <h3>Esempio button per incrementare o diminutire un valore</h3>
+
+    <div>
+      <button
+      (click)="dynamicValue = dynamicValue - 1"
+      >-</button>
+      <span>{{dynamicValue}}</span>
+      <button
+      (click)="dynamicValue = dynamicValue + 1"
+      >+</button>
+
+      
+
+
+    </div>
+
+
   </div>
 </main>
 
