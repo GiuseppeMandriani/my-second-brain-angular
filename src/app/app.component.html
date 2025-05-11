@@ -1,37 +1,37 @@
 <main class="main">
-  <div class="content">
+  <div class="centered-page sm flex flex-col gap-3">
     <img [src]="imgLogoConfig.src" [alt]="imgLogoConfig.alt" [width]="imgLogoConfig.width">
-    <h1 [ngClass]="{'title': true}">{{title}}</h1>
 
-    <h2>Change Detection</h2>
-    <p>Il template di un componente, viene automaticamente renderizzato quando si verificano 3 scenari:</p>
+    <h1 class="page-title ">{{title}}</h1>
 
-    <ul>
-
-      <li>Eventi Mouse e tastiera</li>
-      <li>Api lato server Rest APi</li>
-      <li>Timer</li>
-    </ul>
-
-    <p>Property binding: sincronia proprietà con un attributo </p>
-
-    <hr>
-
-    <h3>Esempio button per incrementare o diminutire un valore</h3>
-
-    <div>
-      <button
-      (click)="dynamicValue = dynamicValue - 1"
-      >-</button>
-      <span>{{dynamicValue}}</span>
-      <button
-      (click)="dynamicValue = dynamicValue + 1"
-      >+</button>
-
+    <div class="m-3">
+      <div 
+        class="alert"
+        [ngClass]="{
+          'alert-primary': alert.type === 'primary',
+          'alert-danger': alert.type === 'danger',
+          'alert-success': alert.type === 'success'
+        }"
+      >
+          {{ alert.msg }} - {{alert.type}}
+      </div>
       
-
-
+      <div class="flex gap-3">
+        <button
+          class="btn"
+          (click)="alert = {msg: 'hello 1', type: 'primary'}">primary</button>
+        <button
+          class="btn"
+          (click)="alert = {msg: 'hello 2', type: 'danger'}">danger</button>
+        <button
+          class="btn"
+          (click)="alert = {msg: 'hello 3', type: 'success'}">success</button>
+      </div>
     </div>
+    
+
+
+
 
 
   </div>
