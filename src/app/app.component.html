@@ -28,6 +28,30 @@
           (click)="alert = {msg: 'hello 3', type: 'success'}">success</button>
       </div>
     </div>
+
+    <div class="m-3">
+
+      <button 
+      class="btn" 
+      (mousemove)="show($event)"
+      (mouseout)="hide()"
+    >OVER</button>
+    
+    <div>{{position?.x}} - {{position?.y}}</div>
+      
+    <div
+      class="absolute bg-black text-white p-3 rounded-xl pointer-events-none"
+      [style.left.px]="position?.x"
+      [style.top.px]="position?.y"
+      [hidden]="!position"
+    >
+        TOOLTIP
+    </div>
+
+
+    </div>
+
+
     
 
 

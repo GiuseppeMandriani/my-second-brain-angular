@@ -7,6 +7,11 @@ type Alert = {
   type: 'primary' | 'danger' | 'success'
 }
 
+export type Coords = {
+  x: number;
+  y: number;
+}
+
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, NgClass],
@@ -25,5 +30,20 @@ export class AppComponent {
   alert: Alert = {
     msg: 'hello',
     type: 'primary'
+  }
+
+  position: Coords | null = null;
+
+
+
+  show(event: MouseEvent) {
+    this.position = {
+      x: event.clientX + 10,
+      y: event.clientY + 10
+    }
+  }
+
+  hide() {
+    this.position = null;
   }
 }
