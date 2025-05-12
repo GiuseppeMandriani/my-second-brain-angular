@@ -14,6 +14,12 @@ type MenuItem = {
 
 type Section = 'home' | 'step1' | 'step2' | 'final' | null;
 
+type Todo = {
+  id: number;
+  title: string;
+  completed: boolean;
+}
+
 export type Coords = {
   x: number;
   y: number;
@@ -50,6 +56,24 @@ export class AppComponent {
     { section: 'final', label: 'Final'},
   ]
 
+  public todos: Todo[] = [
+    {
+      id: 1,
+      title: 'To do 1',
+      completed: true
+    },
+    {
+      id: 2,
+      title: 'To do 2',
+      completed: false
+    },
+    {
+      id: 3,
+      title: 'To do 3',
+      completed: false
+    },
+  ]
+
 
 
   show(event: MouseEvent) {
@@ -61,5 +85,29 @@ export class AppComponent {
 
   hide() {
     this.position = null;
+  }
+
+  addTodo(input: HTMLInputElement) {
+    const newTodo: Todo = {
+      id: Date.now(),
+      title: input.value,
+      completed: false
+    }
+    this.todos.push(newTodo)
+    input.value = '';
+  }
+
+  removeTodo(id: number) {
+    const index = this.todos.findIndex(todo => todo.id === id);
+    this.todos.splice(index, 1)
+  }
+
+  toggleTodo(id: number) {
+    const index = this.todos.findIndex(todo => todo.id === id);
+    this.todos[index].completed = !this.todos[index].completed;
+  }
+
+  saveAll() {
+    console.log(this.todos)
   }
 }
