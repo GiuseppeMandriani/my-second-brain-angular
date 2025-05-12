@@ -54,10 +54,10 @@
     <hr>
 
     <div class="centered-page sm">
-      <button class="btn" (click)="section = 'home'">Home</button>
-      <button class="btn" (click)="section = 'step1'">Step 1</button>
-      <button class="btn" (click)="section = 'step2'">Step 2</button>
-      <button class="btn" (click)="section = 'final'">Final</button>
+      <button
+        *ngFor="let item of menuItems"
+        class="btn" (click)="section = item.section">{{item.label}}</button>
+      
       <hr>
       
       <div [ngSwitch]="section">

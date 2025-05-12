@@ -7,6 +7,13 @@ type Alert = {
   type: 'primary' | 'danger' | 'success'
 }
 
+type MenuItem = {
+  section: Section;
+  label: string;
+}
+
+type Section = 'home' | 'step1' | 'step2' | 'final' | null;
+
 export type Coords = {
   x: number;
   y: number;
@@ -33,8 +40,15 @@ export class AppComponent {
   }
 
 
-  section: 'home' | 'step1' | 'step2' | 'final' | null = null;
+  section: Section = null;
   position: Coords | null = null;
+
+  menuItems: MenuItem[] = [
+    { section: 'home', label: 'Home'},
+    { section: 'step1', label: 'Step 1'},
+    { section: 'step2', label: 'Step 2'},
+    { section: 'final', label: 'Final'},
+  ]
 
 
 
