@@ -1,4 +1,4 @@
-import { NgClass } from '@angular/common';
+import { CommonModule, NgClass } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
@@ -14,7 +14,7 @@ export type Coords = {
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NgClass],
+  imports: [RouterOutlet, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -32,6 +32,8 @@ export class AppComponent {
     type: 'primary'
   }
 
+
+  section: 'home' | 'step1' | 'step2' | 'final' | null = null;
   position: Coords | null = null;
 
 

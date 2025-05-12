@@ -51,6 +51,28 @@
 
     </div>
 
+    <hr>
+
+    <div class="centered-page sm">
+      <button class="btn" (click)="section = 'home'">Home</button>
+      <button class="btn" (click)="section = 'step1'">Step 1</button>
+      <button class="btn" (click)="section = 'step2'">Step 2</button>
+      <button class="btn" (click)="section = 'final'">Final</button>
+      <hr>
+      
+      <div [ngSwitch]="section">
+          <div *ngSwitchCase="'home'">Home</div>
+          <div *ngSwitchCase="'step1'">Step 1</div>
+          <div *ngSwitchCase="'step2'">Step 2</div>
+          <div *ngSwitchCase="'final'">Final</div>   
+          <div *ngSwitchDefault>Select a button</div>
+      </div>
+      
+      
+  </div>
+
+
+
 
     
 
