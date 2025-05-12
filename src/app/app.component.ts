@@ -93,18 +93,23 @@ export class AppComponent {
       title: input.value,
       completed: false
     }
-    this.todos.push(newTodo)
+    // this.todos.push(newTodo)
+    this.todos = [...this.todos, newTodo]
     input.value = '';
   }
 
   removeTodo(id: number) {
-    const index = this.todos.findIndex(todo => todo.id === id);
-    this.todos.splice(index, 1)
+    // const index = this.todos.findIndex(todo => todo.id === id);
+    // this.todos.splice(index, 1)
+    this.todos = this.todos.filter(todo => todo.id !== id )
   }
 
   toggleTodo(id: number) {
-    const index = this.todos.findIndex(todo => todo.id === id);
-    this.todos[index].completed = !this.todos[index].completed;
+    // const index = this.todos.findIndex(todo => todo.id === id);
+    // this.todos[index].completed = !this.todos[index].completed;
+    this.todos = this.todos.map(todo => {
+      return todo.id === id ? {...todo, completed: !todo.completed} : todo;
+    })
   }
 
   saveAll() {
