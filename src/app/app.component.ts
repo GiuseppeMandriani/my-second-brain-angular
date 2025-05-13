@@ -76,6 +76,11 @@ export class AppComponent {
 
   counter = signal<number>(0);
 
+  logged = signal(false);
+
+  currentStep = signal<'step1' | 'step2' | 'final' | null>(null)
+
+
   constructor() {
     effect( () => {
       localStorage.setItem('counter', JSON.stringify(this.counter()))
@@ -159,6 +164,15 @@ export class AppComponent {
 
   doNothing() {
 
+  }
+
+
+  signIn() {
+    this.logged.set(true)
+  }
+
+  logout() {
+    this.logged.set(false)
   }
 
   
