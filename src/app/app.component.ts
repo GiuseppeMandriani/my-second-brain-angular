@@ -1,5 +1,5 @@
 import { CommonModule, NgClass } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 type Alert = {
@@ -74,6 +74,8 @@ export class AppComponent {
     },
   ]
 
+  counter = signal<number>(0)
+
 
 
   show(event: MouseEvent) {
@@ -114,5 +116,19 @@ export class AppComponent {
 
   saveAll() {
     console.log(this.todos)
+  }
+
+  // SIGNALS
+
+  dec() {
+    this.counter.update(c => c - 1)
+  }
+
+  inc() {
+    this.counter.update(c => c + 1)
+  }
+
+  reset() {
+    this.counter.set(0)
   }
 }
