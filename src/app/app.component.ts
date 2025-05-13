@@ -25,6 +25,18 @@ export type Coords = {
   y: number;
 }
 
+type Product = {
+  id: number;
+  name: string;
+  cost: number;
+}
+
+const initialState: Product[] = [
+  {id: 1, name: 'Chocolate', cost: 3},
+  {id: 2, name: 'Milk', cost: 1},
+  {id: 3, name: 'Biscuits', cost: 2},
+]
+
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, CommonModule],
@@ -78,7 +90,12 @@ export class AppComponent {
 
   logged = signal(false);
 
-  currentStep = signal<'step1' | 'step2' | 'final' | null>(null)
+  currentStep = signal<'step1' | 'step2' | 'final' | null>(null);
+
+  products = signal<Product[]>([]);
+
+  noItems = computed(() => this.products().length === 0)
+  totalProducts = computed(() => this.products().length)
 
 
   constructor() {
@@ -173,6 +190,12 @@ export class AppComponent {
 
   logout() {
     this.logged.set(false)
+  }
+
+
+
+  loadProducts() {
+    this.products.set(initialState)
   }
 
   

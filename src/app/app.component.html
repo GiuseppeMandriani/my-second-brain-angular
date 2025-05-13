@@ -160,6 +160,19 @@
         <button class="btn" (click)="currentStep.set('step1')">Next</button>
       }
   }
+
+  <hr>
+
+  <div class="centered-page sm">
+
+    @for (item of products(); track item.id) {
+      <li>{{item.name}}</li>
+  } @empty {
+      <button (click)="loadProducts()">Load</button>
+  }
+  <div *ngIf="!noItems()">There are {{totalProducts()}} products</div>
+   
+</div>
  
 </div>
 
