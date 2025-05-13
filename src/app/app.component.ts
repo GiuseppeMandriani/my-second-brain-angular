@@ -1,5 +1,5 @@
 import { CommonModule, NgClass } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { Component, computed, effect, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 type Alert = {
@@ -74,7 +74,13 @@ export class AppComponent {
     },
   ]
 
-  counter = signal<number>(0)
+  counter = signal<number>(0);
+
+  constructor() {
+    effect( () => {
+      localStorage.setItem('counter', JSON.stringify(this.counter()))
+    })
+  }
 
 
 
@@ -120,6 +126,25 @@ export class AppComponent {
 
   // SIGNALS
 
+  hideIfZero = computed(() => {
+    return this.counter() === 0 ? 'none' : 'inline'
+  })
+
+  isZero = computed(() => {
+    return this.counter() === 0
+  })
+
+
+  isZeroColor = computed(() => {
+    console.log('isZeroColor')
+    return this.isZero() ? 'red' : 'green'
+  })
+  /*
+  isZero() {
+    console.log('is zero')
+    return this.counter() === 0
+  }
+  */
   dec() {
     this.counter.update(c => c - 1)
   }
@@ -131,4 +156,10 @@ export class AppComponent {
   reset() {
     this.counter.set(0)
   }
+
+  doNothing() {
+
+  }
+
+  
 }
