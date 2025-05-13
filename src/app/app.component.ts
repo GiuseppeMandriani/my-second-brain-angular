@@ -29,6 +29,7 @@ type Product = {
   id: number;
   name: string;
   cost: number;
+  description?: string;
 }
 
 const initialState: Product[] = [
@@ -96,6 +97,23 @@ export class AppComponent {
 
   noItems = computed(() => this.products().length === 0)
   totalProducts = computed(() => this.products().length)
+
+  productsTest = signal<Product[]>([
+    {id: 1, name: 'Chocolate', cost: 3, description: 'lorem ...'},
+    {id: 2, name: 'Milk', cost: 1, description: 'bla bla..'},
+    {id: 3, name: 'Biscuits', cost: 2, description: 'super good!'},
+  ]);
+
+  activeProduct = signal<Product | null>(null);
+
+  todosList = signal<Todo[]>([
+    { id: 1, title: 'Todo 1', completed: true },
+    { id: 2, title: 'Todo 2', completed: false },
+    { id: 3, title: 'Todo 3', completed: true },
+  ])
+
+  totalCompleted = computed(() => this.todosList().filter(t => t.completed).length)
+  totalTodos = computed(() => this.todosList().filter(t => !t.completed).length)
 
 
   constructor() {
@@ -196,6 +214,35 @@ export class AppComponent {
 
   loadProducts() {
     this.products.set(initialState)
+  }
+
+  selectProduct(product: Product) {
+    this.activeProduct.set(product)
+  }
+
+  _addTodo(input: HTMLInputElement) {
+    const newTodo: Todo = {
+      id: Date.now(),
+      title: input.value,
+      completed: false
+    }
+    
+    this.todosList.update(todos => [...todos, newTodo])
+    input.value = '';
+  }
+
+  _removeTodo(todoToRemove: Todo) {
+    this.todosList.update(
+      todos => todos.filter(todo => todo.id !== todoToRemove.id)
+    )
+  }
+
+  _toggleTodo(todoToToggle: Todo) {
+    this.todosList.update(todos => {
+      return todos.map(
+        t => t.id === todoToToggle.id ? {...t, completed: !t.completed} : t
+      )
+    })
   }
 
   
