@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, computed, effect, OnInit, signal } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { PhoneComponent } from "../../../shared/components/phone/phone.component";
+import { TimelineComponent } from "../../../shared/components/timeline/timeline.component";
+import { Item } from '../../../shared/components/timeline/model/timeline.model';
 
 type Alert = {
   msg: string;
@@ -41,7 +43,7 @@ const initialState: Product[] = [
 
 @Component({
   selector: 'app-landing-test',
-  imports: [CommonModule, RouterModule, PhoneComponent],
+  imports: [CommonModule, RouterModule, PhoneComponent, TimelineComponent],
   templateUrl: './landing-test.component.html',
   styleUrl: './landing-test.component.css'
 })
@@ -117,9 +119,28 @@ export class LandingTestComponent implements OnInit {
   totalCompleted = computed(() => this.todosList().filter(t => t.completed).length)
   totalTodos = computed(() => this.todosList().filter(t => !t.completed).length)
 
-    url = 'assets/images/soap-bubbles.jpg'
-    alt = 'landscape'
-    showTitle: boolean = false;
+  url = 'assets/images/soap-bubbles.jpg'
+  alt = 'landscape'
+  showTitle: boolean = false;
+
+  timeLineList: Item[] = [
+    {
+      start: '2008',
+      description: 'description 1'
+    },
+    {
+      start: '2009',
+      description: 'description 2'
+    },
+    {
+      start: '2020',
+      description: 'description 3'
+    },
+    {
+      start: '2030',
+      description: 'description 4'
+    },
+  ]
 
 
   constructor() {
