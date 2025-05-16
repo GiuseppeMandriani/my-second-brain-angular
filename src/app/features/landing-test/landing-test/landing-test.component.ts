@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, effect, signal } from '@angular/core';
+import { Component, computed, effect, OnInit, signal } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
+import { PhoneComponent } from "../../../shared/components/phone/phone.component";
 
 type Alert = {
   msg: string;
@@ -40,11 +41,11 @@ const initialState: Product[] = [
 
 @Component({
   selector: 'app-landing-test',
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, PhoneComponent],
   templateUrl: './landing-test.component.html',
   styleUrl: './landing-test.component.css'
 })
-export class LandingTestComponent {
+export class LandingTestComponent implements OnInit {
 
   public title: string = 'angular-course';
   public dynamicValue: number = 0;
@@ -116,11 +117,25 @@ export class LandingTestComponent {
   totalCompleted = computed(() => this.todosList().filter(t => t.completed).length)
   totalTodos = computed(() => this.todosList().filter(t => !t.completed).length)
 
+    url = 'assets/images/soap-bubbles.jpg'
+    alt = 'landscape'
+    showTitle: boolean = false;
+
 
   constructor() {
     effect( () => {
       localStorage.setItem('counter', JSON.stringify(this.counter()))
     })
+  }
+
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+
+    setTimeout(() => {
+      this.showTitle = true;
+    }, 2000);
+    
   }
 
 
