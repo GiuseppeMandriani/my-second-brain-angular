@@ -4,6 +4,7 @@ import { RouterModule, RouterOutlet } from '@angular/router';
 import { PhoneComponent } from "../../../shared/components/phone/phone.component";
 import { TimelineComponent } from "../../../shared/components/timeline/timeline.component";
 import { Item } from '../../../shared/components/timeline/model/timeline.model';
+import { AccordionItemComponent } from "../../../shared/components/accordion-item/accordion-item.component";
 
 type Alert = {
   msg: string;
@@ -43,7 +44,7 @@ const initialState: Product[] = [
 
 @Component({
   selector: 'app-landing-test',
-  imports: [CommonModule, RouterModule, PhoneComponent, TimelineComponent],
+  imports: [CommonModule, RouterModule, PhoneComponent, TimelineComponent, AccordionItemComponent],
   templateUrl: './landing-test.component.html',
   styleUrl: './landing-test.component.css'
 })
@@ -280,6 +281,10 @@ export class LandingTestComponent implements OnInit {
         t => t.id === todoToToggle.id ? {...t, completed: !t.completed} : t
       )
     })
+  }
+
+  doSomething() {
+    window.alert('hello')
   }
 
 
