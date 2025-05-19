@@ -5,6 +5,7 @@ import { PhoneComponent } from "../../../shared/components/phone/phone.component
 import { TimelineComponent } from "../../../shared/components/timeline/timeline.component";
 import { Item } from '../../../shared/components/timeline/model/timeline.model';
 import { AccordionItemComponent } from "../../../shared/components/accordion-item/accordion-item.component";
+import { AlertComponent } from "../../../shared/components/alert/alert.component";
 
 type Alert = {
   msg: string;
@@ -44,7 +45,7 @@ const initialState: Product[] = [
 
 @Component({
   selector: 'app-landing-test',
-  imports: [CommonModule, RouterModule, PhoneComponent, TimelineComponent, AccordionItemComponent],
+  imports: [CommonModule, RouterModule, PhoneComponent, TimelineComponent, AccordionItemComponent, AlertComponent],
   templateUrl: './landing-test.component.html',
   styleUrl: './landing-test.component.css'
 })
@@ -283,8 +284,18 @@ export class LandingTestComponent implements OnInit {
     })
   }
 
+  approve() {
+    window.alert('approve')
+  }
+  cancel() {
+    window.alert('cancel')
+  }
+
   doSomething() {
-    window.alert('hello')
+    console.log('doSomething')
+  }
+  doSomethingElse() {
+    console.log('doSomethingElse')
   }
 
 
