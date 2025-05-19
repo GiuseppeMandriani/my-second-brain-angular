@@ -50,7 +50,7 @@ const initialState: Product[] = [
   templateUrl: './landing-test.component.html',
   styleUrl: './landing-test.component.css'
 })
-export class LandingTestComponent implements OnInit {
+export default class LandingTestComponent implements OnInit {
 
   public title: string = 'angular-course';
   public dynamicValue: number = 0;
