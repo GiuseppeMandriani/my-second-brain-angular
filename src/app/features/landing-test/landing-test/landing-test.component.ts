@@ -6,6 +6,7 @@ import { TimelineComponent } from "../../../shared/components/timeline/timeline.
 import { Item } from '../../../shared/components/timeline/model/timeline.model';
 import { AccordionItemComponent } from "../../../shared/components/accordion-item/accordion-item.component";
 import { AlertComponent } from "../../../shared/components/alert/alert.component";
+import { DropdownComponent, DropDownItem } from "../../../shared/components/dropdown/dropdown.component";
 
 type Alert = {
   msg: string;
@@ -45,7 +46,7 @@ const initialState: Product[] = [
 
 @Component({
   selector: 'app-landing-test',
-  imports: [CommonModule, RouterModule, PhoneComponent, TimelineComponent, AccordionItemComponent, AlertComponent],
+  imports: [CommonModule, RouterModule, PhoneComponent, TimelineComponent, AccordionItemComponent, AlertComponent, DropdownComponent],
   templateUrl: './landing-test.component.html',
   styleUrl: './landing-test.component.css'
 })
@@ -142,6 +143,12 @@ export class LandingTestComponent implements OnInit {
       start: '2030',
       description: 'description 4'
     },
+  ]
+
+  list = [
+    { label: 'item 1', value: 1},
+    { label: 'item 2', value: 2},
+    { label: 'item 3', value: 'something'},
   ]
 
 
@@ -296,6 +303,10 @@ export class LandingTestComponent implements OnInit {
   }
   doSomethingElse() {
     console.log('doSomethingElse')
+  }
+
+  doSomethingDropdown(event: DropDownItem) {
+    console.log('do something', event)
   }
 
 
