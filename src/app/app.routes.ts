@@ -17,6 +17,19 @@ export const routes: Routes = [
         data: { title: 'Hello Demo 1'}
     },    
     { path: 'demo2', loadComponent: () => import('./features/demo2/demo2.component') },
-    { path: 'product/:productId', loadComponent: () => import('./features/product/product.component') },
+    { path: 'demo2', loadComponent: () => import('./features/demo2/demo2.component') },
+    { 
+        path: 'uikit', loadComponent: () => import('./features/uikit/uikit.component'),
+        children: [
+            { path: 'accordion', loadComponent: () => import('./features/uikit/pages/accordion-demo/accordion-demo.component')},
+            { path: 'alert', loadComponent: () => import('./features/uikit/pages/alert-demo/alert-demo.component')},
+            { path: 'dropdown', loadComponent: () => import('./features/uikit/pages/dropdown-demo/dropdown-demo.component')},
+            { path: 'phone', loadComponent: () => import('./features/uikit/pages/phone-demo/phone-demo.component')},
+            { path: 'timeline', loadComponent: () => import('./features/uikit/pages/timeline-demo/timeline-demo.component')},
+            { path: 'variant-icon', loadComponent: () => import('./features/uikit/pages/variant-icon-demo/variant-icon-demo.component')},
+            { path: '', redirectTo: 'accordion', pathMatch: 'full'}
+          ] 
+    
+    },
     { path: '', redirectTo: 'homepage', pathMatch: 'full'}
 ];

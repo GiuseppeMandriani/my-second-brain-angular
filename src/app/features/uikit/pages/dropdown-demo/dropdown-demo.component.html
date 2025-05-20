@@ -1,0 +1,11 @@
+<app-dropdown
+[items]="list"
+(select)="doSomethingDropdown($event)"
+>BOTTOM</app-dropdown>
+
+<hr>
+
+<app-dropdown [items]="list" placement="right">RIGHT</app-dropdown>
+<app-dropdown [items]="list" placement="top">TOP</app-dropdown>
+<app-dropdown [items]="list" placement="left">LEFT</app-dropdown>
+<app-dropdown [items]="list" placement="left" hover>OVER</app-dropdown>
