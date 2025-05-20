@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { authGuard } from './core/auth/auth.guard';
 
 export const routes: Routes = [
     // { path: '', component: HomePageComponent },
@@ -11,7 +12,10 @@ export const routes: Routes = [
 
     // Se nella classe del componente faccio export defautl posso non inserire il then
     { path: 'homepage', loadComponent: () => import('./features/home-page/home-page/home-page.component') },
-    { path: 'landing-test', loadComponent: () => import('./features//landing-test/landing-test/landing-test.component')},   
+    { 
+        path: 'landing-test', 
+        loadComponent: () => import('./features//landing-test/landing-test/landing-test.component'), 
+        canActivate: [authGuard],},   
     { 
         path: 'demo1', loadComponent: () => import('./features/demo1/demo1.component'),
         data: { title: 'Hello Demo 1'}
