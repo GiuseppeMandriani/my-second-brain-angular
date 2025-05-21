@@ -1,3 +1,42 @@
 <p>{{ title | uppercase }}</p>
 
-<hr>
+<hr />
+
+<h1 class="my-5">To DO Server</h1>
+
+<!-- <pre>{{ todos() | json }}</pre>  -->
+
+<div class="centered-page sm flex flex-col gap-3">
+  <h1 class="page-title">Todo List</h1>
+
+  <!--RECAP-->
+  <div>{{ totalCompleted() }} completed | {{ totalTodos() }} todos</div>
+
+  <!--Form-->
+  <input
+    type="text"
+    class="input input-bordered"
+    #inputRef
+    (keydown.enter)="addTodo(inputRef)"
+    placeholder="add todo"
+  />
+
+  <!--List-->
+  <ul>
+    @for (todo of todos(); track todo.id) {
+    <li class="flex justify-between">
+      <div class="flex gap-3">
+        <input
+          type="checkbox"
+          [checked]="todo.completed"
+          (change)="toggleTodo(todo)"
+        />
+        <span [ngClass]="{ 'line-through': todo.completed }">
+          {{ todo.title }}
+        </span>
+      </div>
+      <button (click)="removeTodo(todo)">❌</button>
+    </li>
+    }
+  </ul>
+</div>
