@@ -1,8 +1,8 @@
 import { Inject, Injectable } from '@angular/core';
-import { BaseApiService } from '../../../core/api/base/base-api.service';
+import { BaseApiService } from '../../base/base-api.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { API_URLS } from '../../../core/api/base/constants/base-api-config.token';
+import { API_URLS } from '../../base/constants/base-api-config.token';
 
 @Injectable({
   providedIn: 'root'

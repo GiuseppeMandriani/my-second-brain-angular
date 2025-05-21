@@ -4,4 +4,16 @@
 
 <h1 class="my-3">HttpClient Demo</h1>
       
-<pre>{{ users | json }}</pre>
+<!-- <pre>{{ users | json }}</pre> -->
+
+@for (user of users; track user.id) {
+    <li>{{user.name}}</li>
+}
+
+<hr>
+
+<h1>Http Signals</h1>
+
+@for (user of usersSignal(); track user.id) {
+    <li>{{user.name}}</li>
+}

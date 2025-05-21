@@ -32,4 +32,8 @@ export abstract class BaseApiService {
   protected _delete<T>(endpoint: string, params?: any): Observable<T> {
     return this.httpClient.delete<T>(`${this.baseUrl}${endpoint}`, { params });
   }
+
+
+
+
 }

@@ -1,13 +1,13 @@
-import { JsonPipe, UpperCasePipe } from '@angular/common';
+import { UpperCasePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, inject, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, inject, Input, signal } from '@angular/core';
 import { catchError, noop, of, Subscription, tap } from 'rxjs';
-import { UsersService } from '../../services/users/api-users/users.service';
+import { UsersService } from '../../core/api/users/service/users.service';
+import { IUserResponse } from '../../core/api/users/models/users-response.model';
 
 @Component({
   selector: 'app-demo1',
-  imports: [UpperCasePipe, JsonPipe],
+  imports: [UpperCasePipe],
   templateUrl: './demo1.component.html',
   styleUrl: './demo1.component.css'
 })
@@ -19,7 +19,8 @@ export default class Demo1Component {
 
 
   http = inject(HttpClient)
-  users: any[] = [];
+  users: IUserResponse[] = [];
+  usersSignal = signal<IUserResponse[]>([])
 
   private subscriptions: Subscription[] = [];
 
@@ -32,11 +33,21 @@ export default class Demo1Component {
     // .subscribe(res => {
     //   this.users = res;
     // })
+
+
+    // METODO CON SIGNALS
+
+    this.userService.getUsers().subscribe( res => {
+      this.usersSignal.set(res);
+    })
+
+    // METODO CON BASE API
+
+    this.getUsers();
+
   }
 
-  ngOnInit(): void { 
-    this.getUsers();
-  }
+  ngOnInit(): void { }
 
   ngOnDestroy(): void {
     this.subscriptions.forEach( s => s.unsubscribe())
