@@ -21,7 +21,7 @@ type MenuItem = {
 type Section = 'home' | 'step1' | 'step2' | 'final' | null;
 
 type Todo = {
-  id: number;
+  id: string;
   title: string;
   completed: boolean;
 }
@@ -78,17 +78,17 @@ export default class LandingTestComponent implements OnInit {
 
   public todos: Todo[] = [
     {
-      id: 1,
+      id: "1",
       title: 'To do 1',
       completed: true
     },
     {
-      id: 2,
+      id: "2",
       title: 'To do 2',
       completed: false
     },
     {
-      id: 3,
+      id: "3",
       title: 'To do 3',
       completed: false
     },
@@ -114,9 +114,9 @@ export default class LandingTestComponent implements OnInit {
   activeProduct = signal<Product | null>(null);
 
   todosList = signal<Todo[]>([
-    { id: 1, title: 'Todo 1', completed: true },
-    { id: 2, title: 'Todo 2', completed: false },
-    { id: 3, title: 'Todo 3', completed: true },
+    { id: "1", title: 'Todo 1', completed: true },
+    { id: "2", title: 'Todo 2', completed: false },
+    { id: "3", title: 'Todo 3', completed: true },
   ])
 
   totalCompleted = computed(() => this.todosList().filter(t => t.completed).length)
@@ -183,7 +183,7 @@ export default class LandingTestComponent implements OnInit {
 
   addTodo(input: HTMLInputElement) {
     const newTodo: Todo = {
-      id: Date.now(),
+      id: Date.now().toString(),
       title: input.value,
       completed: false
     }
@@ -192,13 +192,13 @@ export default class LandingTestComponent implements OnInit {
     input.value = '';
   }
 
-  removeTodo(id: number) {
+  removeTodo(id: string) {
     // const index = this.todos.findIndex(todo => todo.id === id);
     // this.todos.splice(index, 1)
     this.todos = this.todos.filter(todo => todo.id !== id )
   }
 
-  toggleTodo(id: number) {
+  toggleTodo(id: string) {
     // const index = this.todos.findIndex(todo => todo.id === id);
     // this.todos[index].completed = !this.todos[index].completed;
     this.todos = this.todos.map(todo => {
@@ -268,7 +268,7 @@ export default class LandingTestComponent implements OnInit {
 
   _addTodo(input: HTMLInputElement) {
     const newTodo: Todo = {
-      id: Date.now(),
+      id: Date.now().toString(),
       title: input.value,
       completed: false
     }
