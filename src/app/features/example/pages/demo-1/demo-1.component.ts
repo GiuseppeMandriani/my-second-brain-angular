@@ -1,19 +1,18 @@
-import { UpperCasePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, computed, inject, Input, Signal, signal } from '@angular/core';
-import { catchError, delay, noop, of, Subscription, tap } from 'rxjs';
-import { UsersService } from '../../core/api/users/service/users.service';
-import { IUserResponse } from '../../core/api/users/models/users-response.model';
+import { Component, computed, inject, Input, signal } from '@angular/core';
+import { IUserResponse } from '../../../../core/api/users/models/users-response.model';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { catchError, delay, noop, of, Subscription, tap } from 'rxjs';
+import { UsersService } from '../../../../core/api/users/service/users.service';
+import { UpperCasePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-demo1',
+  selector: 'app-demo-1',
   imports: [UpperCasePipe],
-  templateUrl: './demo1.component.html',
-  styleUrl: './demo1.component.css'
+  templateUrl: './demo-1.component.html',
+  styleUrl: './demo-1.component.css'
 })
 export default class Demo1Component {
-
   @Input() title = ''; // get data.title // NEW FROM ANGULAR 16 see app.config providerRoot
 
   // public title: string = '';
@@ -22,6 +21,8 @@ export default class Demo1Component {
   http = inject(HttpClient)
   users: IUserResponse[] = [];
   usersSignal = signal<IUserResponse[]>([])
+
+
   usersList = toSignal(
     inject(HttpClient)
     .get<IUserResponse[]>('https://jsonplaceholder.typicode.com/users')
@@ -53,7 +54,7 @@ export default class Demo1Component {
 
     // METODO CON BASE API
 
-    this.getUsers();
+    this.getUsersList();
 
   }
 
@@ -64,7 +65,7 @@ export default class Demo1Component {
   }
 
   // HTTP GET CON BASE API
-  public getUsers() {
+  public getUsersList() {
     this.subscriptions.push(
       this.userService.getUsers().pipe(
         tap((_res)=> {

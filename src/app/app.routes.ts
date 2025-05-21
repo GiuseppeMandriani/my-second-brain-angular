@@ -15,13 +15,8 @@ export const routes: Routes = [
     { 
         path: 'landing-test', 
         loadComponent: () => import('./features//landing-test/landing-test/landing-test.component'), 
-        canActivate: [authGuard],},   
-    { 
-        path: 'demo1', loadComponent: () => import('./features/demo1/demo1.component'),
-        data: { title: 'Hello Demo 1'}
-    },    
-    { path: 'demo2', loadComponent: () => import('./features/demo2/demo2.component') },
-    { path: 'demo2', loadComponent: () => import('./features/demo2/demo2.component') },
+        canActivate: [authGuard]
+    },   
     { 
         path: 'uikit', loadComponent: () => import('./features/uikit/uikit.component'),
         children: [
@@ -32,6 +27,15 @@ export const routes: Routes = [
             { path: 'timeline', loadComponent: () => import('./features/uikit/pages/timeline-demo/timeline-demo.component')},
             { path: 'variant-icon', loadComponent: () => import('./features/uikit/pages/variant-icon-demo/variant-icon-demo.component')},
             { path: '', redirectTo: 'accordion', pathMatch: 'full'}
+          ] 
+    
+    },
+    { 
+        path: 'example', loadComponent: () => import('./features/example/example.component'),
+        children: [
+            { path: 'demo-1', loadComponent: () => import('./features/example/pages/demo-1/demo-1.component'), data: { title: 'Hello Demo 1'}},
+            { path: 'demo-2', loadComponent: () => import('./features/example/pages/demo-2/demo-2.component'), data: { title: 'Hello Demo 2'}},
+            { path: '', redirectTo: 'demo-1', pathMatch: 'full'}
           ] 
     
     },
