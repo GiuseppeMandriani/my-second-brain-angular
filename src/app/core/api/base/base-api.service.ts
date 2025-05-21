@@ -9,6 +9,8 @@ import { API_URLS } from './constants/base-api-config.token';
 export abstract class BaseApiService {
   protected baseUrl: string;
 
+  protected relativeEndpoint: string = ''; // Relative endpoint to be set in the derived class
+
   constructor(
     protected httpClient: HttpClient,
     @Inject(API_URLS) private apiUrls: Record<string, string>,
@@ -32,6 +34,11 @@ export abstract class BaseApiService {
   protected _delete<T>(endpoint: string, params?: any): Observable<T> {
     return this.httpClient.delete<T>(`${this.baseUrl}${endpoint}`, { params });
   }
+  
+  protected _patch<T>(endpoint: string, body: any, params?: any): Observable<T> {
+    return this.httpClient.patch<T>(`${this.baseUrl}${endpoint}`, body, { params });
+  }
+
 
 
 

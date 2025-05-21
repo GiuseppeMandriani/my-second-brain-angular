@@ -1,6 +1,6 @@
 import { HttpParams } from "@angular/common/http";
 
-export class BaseApiRequest<T> {
+export class MDSBaseApiRequest<T> {
   urlPattern: string;
   pathParams: string[];
   paramsList: string[] = [];

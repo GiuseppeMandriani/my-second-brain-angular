@@ -46,9 +46,17 @@ export default class Demo2Component implements OnInit {
   }
 
   addTodo(input: HTMLInputElement) {
-    // this.todos.push(newTodo)
-    this.http
-      .post<Todo>('http://localhost:3000/local-todos', {
+    // this.http
+    //   .post<Todo>('http://localhost:3000/local-todos', {
+    //     title: input.value,
+    //     completed: false,
+    //   })
+    //   .subscribe((newTodo: Todo) => {
+    //     this.todos.update((prevTodos) => [...prevTodos, newTodo]);
+    //   });
+
+    this.toDoService
+      .addTodo({
         title: input.value,
         completed: false,
       })
@@ -60,26 +68,41 @@ export default class Demo2Component implements OnInit {
   }
 
   removeTodo(toDoToRemove: Todo) {
-    this.http
-      .delete<Todo>(`http://localhost:3000/local-todos/${toDoToRemove.id}`)
-      .subscribe(() => {
+    // this.http
+    //   .delete<Todo>(`http://localhost:3000/local-todos/${toDoToRemove.id}`)
+    //   .subscribe(() => {
+    //     this.todos.update((prevTodos) =>
+    //       prevTodos.filter((todo) => todo.id !== toDoToRemove.id)
+    //     );
+    //   });
+
+    if (toDoToRemove && toDoToRemove.id) {
+      this.toDoService.deleteTodo({ id: toDoToRemove.id }).subscribe(() => {
         this.todos.update((prevTodos) =>
           prevTodos.filter((todo) => todo.id !== toDoToRemove.id)
         );
       });
+    }
   }
 
   toggleTodo(todoToToggle: Todo) {
-    this.http.patch<Todo>(`http://localhost:3000/local-todos/${todoToToggle.id}`, {
-      ...todoToToggle,
-      completed: !todoToToggle.completed
-    })
-      .subscribe(res => {
-        this.todos.update(todos => {
-          return todos.map(t => t.id === todoToToggle.id ? res : t);
-        })
-      })
+    // this.http.patch<Todo>(`http://localhost:3000/local-todos/${todoToToggle.id}`, {
+    //   ...todoToToggle,
+    //   completed: !todoToToggle.completed
+    // })
+    //   .subscribe(res => {
+    //     this.todos.update(todos => {
+    //       return todos.map(t => t.id === todoToToggle.id ? res : t);
+    //     })
+    //   })
 
+    if (todoToToggle && todoToToggle.id) {
+      this.toDoService.updateTodo({ id: todoToToggle.id }).subscribe((res) => {
+        this.todos.update((todos) => {
+          return todos.map((t) => (t.id === todoToToggle.id ? res : t));
+        });
+      });
+    }
   }
 
   saveAll() {
