@@ -1,9 +1,10 @@
 import { UpperCasePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, inject, Input, signal } from '@angular/core';
-import { catchError, noop, of, Subscription, tap } from 'rxjs';
+import { Component, computed, inject, Input, Signal, signal } from '@angular/core';
+import { catchError, delay, noop, of, Subscription, tap } from 'rxjs';
 import { UsersService } from '../../core/api/users/service/users.service';
 import { IUserResponse } from '../../core/api/users/models/users-response.model';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-demo1',
@@ -21,6 +22,15 @@ export default class Demo1Component {
   http = inject(HttpClient)
   users: IUserResponse[] = [];
   usersSignal = signal<IUserResponse[]>([])
+  usersList = toSignal(
+    inject(HttpClient)
+    .get<IUserResponse[]>('https://jsonplaceholder.typicode.com/users')
+    .pipe(
+      delay(2000)
+    )
+  )
+
+  names = computed(() => this.usersList()?.map(u => u.name));
 
   private subscriptions: Subscription[] = [];
 

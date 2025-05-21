@@ -17,3 +17,12 @@
 @for (user of usersSignal(); track user.id) {
     <li>{{user.name}}</li>
 }
+
+
+<hr>
+
+<h1>Http toSignals</h1>
+
+@for (name of names(); track $index) {
+    <li>{{name}}</li>
+}
