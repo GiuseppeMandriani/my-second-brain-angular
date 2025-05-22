@@ -38,9 +38,12 @@ export default class Demo1Component {
 
   // RESOURCE API NEW IN ANGULAR 19 (EVITO DI UTILIZZARE SIGNAL E HTTP)
 
-  userResource = resource<User, void>({
-    loader: async() => {
-      const res = await fetch(`https://jsonplaceholder.typicode.com/users/3`)
+  userId = signal(1)
+
+  userResource = resource<User, number>({
+    request: this.userId,
+    loader: async({ request: id }) => {
+      const res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
       return await res.json()
     }
   })
@@ -97,6 +100,18 @@ export default class Demo1Component {
 
   refresh() {
     this.userResource.reload()
+  }
+
+  nextUser() {
+    this.userId.update(id => {
+      return id < 10 ? id + 1 : 1
+    })
+  }
+
+  prevUser() {
+    this.userId.update(id => {
+      return id > 1 ? id - 1 : 10
+    })
   }
 
 }

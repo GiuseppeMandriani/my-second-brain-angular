@@ -30,6 +30,14 @@
 <hr>
 
 <h1>RESOURCE API</h1>
+<h2>Actual user {{userId()}}</h2>
+<div class="flex gap-3">
+    <button class="btn" (click)="prevUser()">Prev User</button>
+    <button class="btn" (click)="nextUser()">Next User</button>
+    
+
+</div>
+
 
 @if(userResource.isLoading()) {
     <div>loading...</div>
