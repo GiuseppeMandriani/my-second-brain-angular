@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { API_URLS } from '../../base/constants/base-api-config.token';
 import { Observable } from 'rxjs';
 import { ITodoResponse } from '../models/todo-response.model';
-import { IInsertTodoRequest, ITodoByIdRequest } from '../models/todo-request.model';
+import { IInsertTodoRequest, ITodoByIdRequest, ITodoUpdateRequest } from '../models/todo-request.model';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +35,7 @@ export class TodoService extends BaseApiService {
   }
 
   //PATCH /local-todos/{id}
-  public updateTodo(request: ITodoByIdRequest): Observable<any> {
-    return this._patch<ITodoByIdRequest>(`${this.relativeEndpoint}/${request.id}`, request);
+  public updateTodo(request: ITodoUpdateRequest): Observable<any> {
+    return this._patch<ITodoUpdateRequest>(`${this.relativeEndpoint}/${request.id}`, request);
   }
 }

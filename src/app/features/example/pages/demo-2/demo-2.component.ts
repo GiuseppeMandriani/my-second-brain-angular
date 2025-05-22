@@ -11,10 +11,11 @@ import { Todo } from '../../../../core/api/todo/models/todo-data.model';
 import { TodoService } from '../../../../core/api/todo/service/todo.service';
 import { HttpClient } from '@angular/common/http';
 import { HttpErrorComponent } from "../../../../shared/components/http-error/http-error.component";
+import { TodosSummaryComponent } from "./components/todos-summary/todos-summary.component";
 
 @Component({
   selector: 'app-demo-2',
-  imports: [UpperCasePipe, NgClass, JsonPipe, HttpErrorComponent],
+  imports: [UpperCasePipe, NgClass, HttpErrorComponent, TodosSummaryComponent],
   templateUrl: './demo-2.component.html',
   styleUrl: './demo-2.component.css',
 })
@@ -126,7 +127,10 @@ export default class Demo2Component implements OnInit {
     //   })
 
     if (todoToToggle && todoToToggle.id) {
-      this.toDoService.updateTodo({ id: todoToToggle.id }).subscribe({
+      this.toDoService.updateTodo({
+        ...todoToToggle,
+        completed: !todoToToggle.completed
+      }).subscribe({
         next: (res) => {
           this.todos.update((todos) => {
             return todos.map((t) => (t.id === todoToToggle.id ? res : t));

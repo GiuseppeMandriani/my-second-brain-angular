@@ -14,8 +14,8 @@
   }
 
   <!--RECAP-->
-  <div>{{ totalCompleted() }} completed | {{ totalTodos() }} todos</div>
-
+  <app-todos-summary [completed]="totalCompleted()" [todos]="totalTodos()"></app-todos-summary>
+  
   <!--Form-->
   <input
     type="text"
