@@ -39,9 +39,9 @@ export default class Demo1Component {
   // RESOURCE API NEW IN ANGULAR 19 (EVITO DI UTILIZZARE SIGNAL E HTTP)
 
   userResource = resource<User, void>({
-    loader: () => {
-      return fetch(`https://jsonplaceholder.typicode.com/users/2`)
-        .then(res => res.json())
+    loader: async() => {
+      const res = await fetch(`https://jsonplaceholder.typicode.com/users/3`)
+      return await res.json()
     }
   })
 
@@ -93,6 +93,10 @@ export default class Demo1Component {
       ).subscribe(noop)
     )
 
+  }
+
+  refresh() {
+    this.userResource.reload()
   }
 
 }
