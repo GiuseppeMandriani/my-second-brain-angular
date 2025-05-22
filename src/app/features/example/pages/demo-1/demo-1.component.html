@@ -47,7 +47,12 @@
 
   <hr>
 
-  <h1>{{ userResourceName.value()}}</h1>
+  <h1 class="text-2xl my-3">{{ userResourceName.value()?.user?.name }}</h1>
+
+  @for (post of userResourceName.value()?.posts; track post.id) {
+    <li class="text-2xl my-3">{{post.title}}</li>
+    <p>{{post.body}}</p>
+  }
 
 
   <button class="btn" (click)="refresh()">Refresh last data</button>

@@ -2,10 +2,16 @@ import { HttpClient } from '@angular/common/http';
 import { Component, computed, inject, Input, resource, signal } from '@angular/core';
 import { IUserResponse } from '../../../../core/api/users/models/users-response.model';
 import { rxResource, toSignal } from '@angular/core/rxjs-interop';
-import { catchError, delay, map, noop, of, Subscription, tap } from 'rxjs';
+import { catchError, delay, forkJoin, map, noop, of, Subscription, tap } from 'rxjs';
 import { UsersService } from '../../../../core/api/users/service/users.service';
 import { JsonPipe, UpperCasePipe } from '@angular/common';
 import { User } from '../../../../core/api/users/models/users-data.model';
+
+type Post = {
+  id: number;
+  title: string;
+  body: string;
+}
 
 @Component({
   selector: 'app-demo-1',
@@ -48,15 +54,15 @@ export default class Demo1Component {
     }
   })
 
-  // RESOURCE API CON RXJS
+  // RESOURCE API CON RXJS e FORKJOIN
 
-  userResourceName = rxResource<string, number>({
+  userResourceName = rxResource<{ user: User, posts: Post[] }, number>({
     request: this.userId,
     loader: ({ request: id }) => {
-      return this.http.get<User>(`https://jsonplaceholder.typicode.com/users/${id}`)
-        .pipe(
-          map(user => user.name)
-        )
+      return forkJoin({
+        user: this.http.get<User>(`https://jsonplaceholder.typicode.com/users/${id}`),
+        posts: this.http.get<Post[]>(`https://jsonplaceholder.typicode.com/posts?userId=${id}`)
+      })
     }
   })
 
