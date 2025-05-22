@@ -22,6 +22,7 @@ export default class Demo2Component implements OnInit {
 
   todos = signal<Todo[]>([]);
   http = inject(HttpClient);
+  error = signal<boolean>(false);
 
   totalCompleted = computed(
     () => this.todos().filter((t) => t.completed).length
@@ -33,8 +34,20 @@ export default class Demo2Component implements OnInit {
   ngOnInit(): void {
     // METODO CON SIGNALS E SERVICE
 
-    this.toDoService.getTodo().subscribe((res) => {
-      this.todos.set(res);
+    // this.toDoService.getTodo().subscribe((res) => {
+    //   this.todos.set(res);
+    // });
+    this.toDoService.getTodo().subscribe({
+      next: (res) => {
+        this.todos.set(res);
+      },
+      error: (err) => {
+        console.error('Error fetching todos:', err);
+        this.error.set(true);
+      },
+      complete: () => {
+        console.log('Todos fetched successfully');
+      },
     });
 
     // METODO CLASSICO HTTP GET
@@ -54,20 +67,28 @@ export default class Demo2Component implements OnInit {
     //   .subscribe((newTodo: Todo) => {
     //     this.todos.update((prevTodos) => [...prevTodos, newTodo]);
     //   });
+    this.error.set(false);
 
     this.toDoService
       .addTodo({
         title: input.value,
         completed: false,
       })
-      .subscribe((newTodo: Todo) => {
-        this.todos.update((prevTodos) => [...prevTodos, newTodo]);
+      .subscribe({
+        next: (newTodo: Todo) => {
+          this.todos.update((prevTodos) => [...prevTodos, newTodo]);
+        },
+        error: (err) => {
+          console.error('Error fetching todos:', err);
+          this.error.set(true);
+        },
       });
 
     input.value = '';
   }
 
   removeTodo(toDoToRemove: Todo) {
+    this.error.set(false);
     // this.http
     //   .delete<Todo>(`http://localhost:3000/local-todos/${toDoToRemove.id}`)
     //   .subscribe(() => {
@@ -77,15 +98,22 @@ export default class Demo2Component implements OnInit {
     //   });
 
     if (toDoToRemove && toDoToRemove.id) {
-      this.toDoService.deleteTodo({ id: toDoToRemove.id }).subscribe(() => {
-        this.todos.update((prevTodos) =>
-          prevTodos.filter((todo) => todo.id !== toDoToRemove.id)
-        );
+      this.toDoService.deleteTodo({ id: toDoToRemove.id }).subscribe({
+        next: () => {
+          this.todos.update((prevTodos) =>
+            prevTodos.filter((todo) => todo.id !== toDoToRemove.id)
+          );
+        },
+        error: (err) => {
+          console.error('Error fetching todos:', err);
+          this.error.set(true);
+        },
       });
     }
   }
 
   toggleTodo(todoToToggle: Todo) {
+    this.error.set(false);
     // this.http.patch<Todo>(`http://localhost:3000/local-todos/${todoToToggle.id}`, {
     //   ...todoToToggle,
     //   completed: !todoToToggle.completed
@@ -97,10 +125,16 @@ export default class Demo2Component implements OnInit {
     //   })
 
     if (todoToToggle && todoToToggle.id) {
-      this.toDoService.updateTodo({ id: todoToToggle.id }).subscribe((res) => {
-        this.todos.update((todos) => {
-          return todos.map((t) => (t.id === todoToToggle.id ? res : t));
-        });
+      this.toDoService.updateTodo({ id: todoToToggle.id }).subscribe({
+        next: (res) => {
+          this.todos.update((todos) => {
+            return todos.map((t) => (t.id === todoToToggle.id ? res : t));
+          });
+        },
+        error: (err) => {
+          console.error('Error fetching todos:', err);
+          this.error.set(true);
+        },
       });
     }
   }
