@@ -15,21 +15,21 @@
     {
       "id": 1,
       "name": "T-Shirt",
-      "image": "assets/images/angular.png",
+      "image": "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
       "description": "lorem...",
       "cost": 10
     },
     {
       "id": 2,
       "name": "Bullet",
-      "image": "assets/images/react.png",
+      "image": "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
       "description": "lorem...",
       "cost": 5
     },
     {
       "id": 3,
       "name": "Pic",
-      "image": "assets/images/js.png",
+      "image": "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
       "description": "lorem...",
       "cost": 2
     }

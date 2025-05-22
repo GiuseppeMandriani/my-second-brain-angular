@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { CartService } from '../../../services/cart/cart/cart.service';
 
 @Component({
   selector: 'app-navbar-2',
@@ -7,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrl: './navbar-2.component.css'
 })
 export class Navbar2Component {
+  cartService = inject(CartService)
 
 }
