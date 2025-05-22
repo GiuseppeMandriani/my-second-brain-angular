@@ -27,3 +27,13 @@
     <li>{{name}}</li>
 }
 
+<hr>
+
+<h1>RESOURCE API</h1>
+
+@if(userResource.isLoading()) {
+    <div>loading...</div>
+  }
+  <h1>{{ userResource.value()?.name }}</h1>
+  <pre>{{ userResource.value() | json }}</pre>
+

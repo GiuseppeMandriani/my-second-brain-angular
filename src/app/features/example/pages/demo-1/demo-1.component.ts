@@ -1,14 +1,15 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, computed, inject, Input, signal } from '@angular/core';
+import { Component, computed, inject, Input, resource, signal } from '@angular/core';
 import { IUserResponse } from '../../../../core/api/users/models/users-response.model';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { catchError, delay, noop, of, Subscription, tap } from 'rxjs';
 import { UsersService } from '../../../../core/api/users/service/users.service';
-import { UpperCasePipe } from '@angular/common';
+import { JsonPipe, UpperCasePipe } from '@angular/common';
+import { User } from '../../../../core/api/users/models/users-data.model';
 
 @Component({
   selector: 'app-demo-1',
-  imports: [UpperCasePipe],
+  imports: [UpperCasePipe, JsonPipe],
   templateUrl: './demo-1.component.html',
   styleUrl: './demo-1.component.css'
 })
@@ -34,6 +35,15 @@ export default class Demo1Component {
   names = computed(() => this.usersList()?.map(u => u.name));
 
   private subscriptions: Subscription[] = [];
+
+  // RESOURCE API NEW IN ANGULAR 19 (EVITO DI UTILIZZARE SIGNAL E HTTP)
+
+  userResource = resource<User, void>({
+    loader: () => {
+      return fetch(`https://jsonplaceholder.typicode.com/users/2`)
+        .then(res => res.json())
+    }
+  })
 
   constructor(
     private userService: UsersService) {
