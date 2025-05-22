@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, computed, inject, Input, resource, signal } from '@angular/core';
 import { IUserResponse } from '../../../../core/api/users/models/users-response.model';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { catchError, delay, noop, of, Subscription, tap } from 'rxjs';
+import { rxResource, toSignal } from '@angular/core/rxjs-interop';
+import { catchError, delay, map, noop, of, Subscription, tap } from 'rxjs';
 import { UsersService } from '../../../../core/api/users/service/users.service';
 import { JsonPipe, UpperCasePipe } from '@angular/common';
 import { User } from '../../../../core/api/users/models/users-data.model';
@@ -45,6 +45,18 @@ export default class Demo1Component {
     loader: async({ request: id, abortSignal }) => {
       const res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {signal: abortSignal})
       return await res.json()
+    }
+  })
+
+  // RESOURCE API CON RXJS
+
+  userResourceName = rxResource<string, number>({
+    request: this.userId,
+    loader: ({ request: id }) => {
+      return this.http.get<User>(`https://jsonplaceholder.typicode.com/users/${id}`)
+        .pipe(
+          map(user => user.name)
+        )
     }
   })
 
