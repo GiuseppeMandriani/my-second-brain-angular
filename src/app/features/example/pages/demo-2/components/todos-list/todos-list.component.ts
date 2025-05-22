@@ -1,10 +1,11 @@
 import { JsonPipe, NgClass } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Todo } from '../../../../../../core/api/todo/models/todo-data.model';
 
 @Component({
   selector: 'app-todos-list',
   imports: [NgClass],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './todos-list.component.html',
   styleUrl: './todos-list.component.css'
 })

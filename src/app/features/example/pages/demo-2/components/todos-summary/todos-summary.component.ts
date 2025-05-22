@@ -1,8 +1,9 @@
-import { Component, Input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, signal } from '@angular/core';
 
 @Component({
   selector: 'app-todos-summary',
   imports: [],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './todos-summary.component.html',
   styleUrl: './todos-summary.component.css'
 })
