@@ -10,10 +10,11 @@ import {
 import { Todo } from '../../../../core/api/todo/models/todo-data.model';
 import { TodoService } from '../../../../core/api/todo/service/todo.service';
 import { HttpClient } from '@angular/common/http';
+import { HttpErrorComponent } from "../../../../shared/components/http-error/http-error.component";
 
 @Component({
   selector: 'app-demo-2',
-  imports: [UpperCasePipe, NgClass, JsonPipe],
+  imports: [UpperCasePipe, NgClass, JsonPipe, HttpErrorComponent],
   templateUrl: './demo-2.component.html',
   styleUrl: './demo-2.component.css',
 })

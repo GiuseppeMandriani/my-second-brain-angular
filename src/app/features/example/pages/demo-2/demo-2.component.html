@@ -10,10 +10,7 @@
   <h1 class="page-title">Todo List</h1>
 
   @if(error()) {
-    <div class="bg-red-400 rounded-xl p-3 text-black">
-      errore!
-  </div> 
-
+    <app-http-error [msg]="'Server Error'"></app-http-error>
   }
 
   <!--RECAP-->
