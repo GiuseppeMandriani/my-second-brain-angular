@@ -21,7 +21,13 @@
 
 
   <!--List-->
-  <ul>
+  <app-todos-list 
+    [todos]="todos()"
+    (toggleTodo)="toggleTodo($event)"
+    (deleteTodo)="removeTodo($event)"
+    
+    ></app-todos-list>
+  <!-- <ul>
     @for (todo of todos(); track todo.id) {
     <li class="flex justify-between">
       <div class="flex gap-3">
@@ -37,5 +43,5 @@
       <button (click)="removeTodo(todo)">❌</button>
     </li>
     }
-  </ul>
+  </ul> -->
 </div>

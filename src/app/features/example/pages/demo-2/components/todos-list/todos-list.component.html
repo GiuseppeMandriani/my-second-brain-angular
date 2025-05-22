@@ -1,1 +1,17 @@
-<p>todos-list works!</p>
+<ul>
+    @for (todo of todos; track todo.id) {
+    <li class="flex justify-between">
+      <div class="flex gap-3">
+        <input
+          type="checkbox"
+          [checked]="todo.completed"
+          (change)="toggle(todo)"
+        />
+        <span [ngClass]="{ 'line-through': todo.completed }">
+          {{ todo.title }}
+        </span>
+      </div>
+      <button (click)="delete(todo)">❌</button>
+    </li>
+    }
+  </ul>

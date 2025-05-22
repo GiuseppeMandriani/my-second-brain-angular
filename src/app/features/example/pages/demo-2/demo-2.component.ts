@@ -13,10 +13,11 @@ import { HttpClient } from '@angular/common/http';
 import { HttpErrorComponent } from "../../../../shared/components/http-error/http-error.component";
 import { TodosSummaryComponent } from "./components/todos-summary/todos-summary.component";
 import { TodosFormComponent } from "./components/todos-form/todos-form.component";
+import { TodosListComponent } from "./components/todos-list/todos-list.component";
 
 @Component({
   selector: 'app-demo-2',
-  imports: [UpperCasePipe, NgClass, HttpErrorComponent, TodosSummaryComponent, TodosFormComponent],
+  imports: [UpperCasePipe, NgClass, HttpErrorComponent, TodosSummaryComponent, TodosFormComponent, TodosListComponent],
   templateUrl: './demo-2.component.html',
   styleUrl: './demo-2.component.css',
 })
