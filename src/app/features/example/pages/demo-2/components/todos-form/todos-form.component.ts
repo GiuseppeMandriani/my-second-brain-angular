@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Todo } from '../../../../../../core/api/todo/models/todo-data.model';
 
 @Component({
   selector: 'app-todos-form',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './todos-form.component.css'
 })
 export class TodosFormComponent {
-
+  @Output() addTodo = new EventEmitter<HTMLInputElement>();
 }

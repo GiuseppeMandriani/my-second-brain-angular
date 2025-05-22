@@ -12,10 +12,11 @@ import { TodoService } from '../../../../core/api/todo/service/todo.service';
 import { HttpClient } from '@angular/common/http';
 import { HttpErrorComponent } from "../../../../shared/components/http-error/http-error.component";
 import { TodosSummaryComponent } from "./components/todos-summary/todos-summary.component";
+import { TodosFormComponent } from "./components/todos-form/todos-form.component";
 
 @Component({
   selector: 'app-demo-2',
-  imports: [UpperCasePipe, NgClass, HttpErrorComponent, TodosSummaryComponent],
+  imports: [UpperCasePipe, NgClass, HttpErrorComponent, TodosSummaryComponent, TodosFormComponent],
   templateUrl: './demo-2.component.html',
   styleUrl: './demo-2.component.css',
 })

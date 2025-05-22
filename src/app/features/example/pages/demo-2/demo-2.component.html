@@ -15,15 +15,10 @@
 
   <!--RECAP-->
   <app-todos-summary [completed]="totalCompleted()" [todos]="totalTodos()"></app-todos-summary>
-  
+
   <!--Form-->
-  <input
-    type="text"
-    class="input input-bordered"
-    #inputRef
-    (keydown.enter)="addTodo(inputRef)"
-    placeholder="add todo"
-  />
+  <app-todos-form (addTodo)="addTodo($event)"></app-todos-form>
+
 
   <!--List-->
   <ul>
