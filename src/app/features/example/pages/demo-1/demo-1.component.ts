@@ -42,8 +42,8 @@ export default class Demo1Component {
 
   userResource = resource<User, number>({
     request: this.userId,
-    loader: async({ request: id }) => {
-      const res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
+    loader: async({ request: id, abortSignal }) => {
+      const res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {signal: abortSignal})
       return await res.json()
     }
   })
