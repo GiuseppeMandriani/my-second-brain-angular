@@ -1,4 +1,4 @@
-import { inject, Injectable, signal } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
 import { LocalConfig } from '../../core/api/app-configs/models/app-config-data.model';
 import { AppConfigService } from '../../core/api/app-configs/service/app-config.service';
 
@@ -14,6 +14,10 @@ export class SettingsService {
   })
 
   appConfigService = inject(AppConfigService);
+
+  appTitle = computed(() => this.config().appTitle)
+  color = computed(() => this.config().color)
+  isShopEnabled = computed(() => this.config().enableShop)
 
   constructor() {
     this.appConfigService.getLocalConfigs().subscribe((response) => {
