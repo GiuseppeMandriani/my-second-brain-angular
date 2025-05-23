@@ -17,7 +17,7 @@ import { TodosListComponent } from "./components/todos-list/todos-list.component
 
 @Component({
   selector: 'app-demo-2',
-  imports: [UpperCasePipe, NgClass, HttpErrorComponent, TodosSummaryComponent, TodosFormComponent, TodosListComponent],
+  imports: [UpperCasePipe, HttpErrorComponent, TodosSummaryComponent, TodosFormComponent, TodosListComponent],
   templateUrl: './demo-2.component.html',
   styleUrl: './demo-2.component.css',
 })
