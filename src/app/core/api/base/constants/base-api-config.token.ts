@@ -6,6 +6,7 @@ export const API_URLS = new InjectionToken<Record<string, string>>('API_URLS', {
     discogs: 'https://api.discogs.com/',
     users: 'https://jsonplaceholder.typicode.com/users',
     localTodo: 'http://localhost:3000',
-    localProducts: 'http://localhost:3000'
+    localProducts: 'http://localhost:3000',
+    localConfigs: 'http://localhost:3000',
   }),
 });

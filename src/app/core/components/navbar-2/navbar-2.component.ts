@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
-import { CartService } from '../../../services/cart/cart/cart.service';
+import { CartService } from '../../../services/cart/cart.service';
 import { RouterLink } from '@angular/router';
+import { SettingsService } from '../../../services/settings/settings.service';
 
 @Component({
   selector: 'app-navbar-2',
@@ -9,6 +10,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './navbar-2.component.css'
 })
 export class Navbar2Component {
-  cartService = inject(CartService)
+  cartService = inject(CartService);
+  settingsService = inject(SettingsService);
 
 }

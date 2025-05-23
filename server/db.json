@@ -33,5 +33,10 @@
       "description": "lorem...",
       "cost": 2
     }
-  ]
+  ],
+  "local-configs": {
+    "appTitle": "Angular shop",
+    "color": "#b142b3",
+    "enableShop": true
+  }
 }

@@ -1,1 +1,34 @@
-<p>editor works!</p>
+<h1 class="text-xl my-6">Editor</h1>
+    
+<div class="flex gap-2 items-center">
+  <input 
+    type="text"
+    class="input input-bordered"
+    #appTitle
+    (input)="settingsService.setTitle(appTitle.value)"
+    [value]="settingsService.config().appTitle"
+  >
+    
+    <input 
+      type="checkbox"
+      class="toggle toggle-success"
+      #enableShop
+      (input)="settingsService.setEnableShop(enableShop.checked)"
+      [checked]="settingsService.config().enableShop"
+    >
+  
+  <input 
+    type="color"
+    class="input input-bordered"
+    #color
+    (input)="settingsService.setColor(color.value)"
+    [value]="settingsService.config().color"
+  >
+</div>
+
+<button 
+class="btn btn-primary"
+(click)="updateSettings($event)">
+Salva Configurazione
+</button>
+

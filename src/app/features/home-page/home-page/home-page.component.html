@@ -15,10 +15,13 @@
                     </div>
                     <p>{{product.description}}</p>
                     <div class="card-actions justify-end">
-                        <button class="btn btn-primary"
-                        (click)="cartService.addToCart(product)">
-                            Add to Cart
-                        </button>
+                        @if(settingsService.config().enableShop) {
+                            <button class="btn btn-primary"
+                            (click)="cartService.addToCart(product)">
+                                Add to Cart
+                            </button>
+                        }
+
                     </div>
                 </div>
             </div>

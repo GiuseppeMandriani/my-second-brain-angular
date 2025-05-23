@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { SettingsService } from '../../../../services/settings/settings.service';
 
 @Component({
   selector: 'app-preview',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './preview.component.css'
 })
 export class PreviewComponent {
-
+  settingsService = inject(SettingsService);
 }

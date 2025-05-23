@@ -1,9 +1,10 @@
 import { JsonPipe } from '@angular/common';
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Product } from '../../../core/api/products/models/products-data.model';
 import { ProductsService } from '../../../core/api/products/service/products.service';
-import { CartService } from '../../../services/cart/cart/cart.service';
+import { CartService } from '../../../services/cart/cart.service';
+import { SettingsService } from '../../../services/settings/settings.service';
 
 @Component({
   selector: 'app-home-page',
@@ -14,6 +15,8 @@ import { CartService } from '../../../services/cart/cart/cart.service';
 export default class HomePageComponent implements OnInit {
   public products = signal<Product[]>([]);
   public cartItems = signal<Product[]>([]);
+
+  settingsService = inject(SettingsService);
 
 
   constructor(
