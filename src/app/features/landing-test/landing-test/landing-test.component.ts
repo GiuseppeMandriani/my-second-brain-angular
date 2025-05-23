@@ -52,7 +52,7 @@ const initialState: Product[] = [
 })
 export default class LandingTestComponent implements OnInit {
 
-  public title: string = 'angular-course';
+  public title: string = 'my-second-brain';
   public dynamicValue: number = 0;
   public imgLogoConfig = {
     src: "https://miro.medium.com/v2/resize:fit:1400/1*WWRm1tIQ5MinLE0rUTo62w.png",

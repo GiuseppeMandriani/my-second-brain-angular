@@ -1,13 +1,16 @@
 {
   "name": "my-second-brain",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "server": "json-server --watch server/db.json"
+    "server": "json-server --watch server/db.json",
+    "app-patch": "npm --no-git-tag-version version patch",
+    "app-major": "npm --no-git-tag-version version major",
+    "app-minor": "npm --no-git-tag-version version minor"
   },
   "private": true,
   "dependencies": {
