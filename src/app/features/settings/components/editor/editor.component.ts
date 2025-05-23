@@ -7,7 +7,7 @@ import { TOAST_PRESETS } from '../../../../shared/configs/toasts/toasts.config';
 
 @Component({
   selector: 'app-editor',
-  imports: [JsonPipe],
+  imports: [],
   templateUrl: './editor.component.html',
   styleUrl: './editor.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
