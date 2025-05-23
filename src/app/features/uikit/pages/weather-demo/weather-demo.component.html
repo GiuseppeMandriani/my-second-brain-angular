@@ -1,0 +1,7 @@
+<div class="flex gap-4">
+    <button (click)="city.set('Trieste')">Trieste</button>
+    <button (click)="city.set('Rome')">Rome</button>
+    <button (click)="city.set('Milan')">Milano</button>
+</div>
+   
+  <app-weather [location]="city()" />

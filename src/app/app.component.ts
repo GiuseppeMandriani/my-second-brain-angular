@@ -13,7 +13,7 @@ import { ToastComponent } from "./shared/components/toast/toast.component";
 })
 export class AppComponent {
 
-  public isAppOne: boolean = false;
+  public isAppOne: boolean = true;
 
   constructor(router: Router) {
     router.events.subscribe(event => {

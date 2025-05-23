@@ -28,6 +28,7 @@ export const routes: Routes = [
             { path: 'phone', loadComponent: () => import('./features/uikit/pages/phone-demo/phone-demo.component')},
             { path: 'timeline', loadComponent: () => import('./features/uikit/pages/timeline-demo/timeline-demo.component')},
             { path: 'variant-icon', loadComponent: () => import('./features/uikit/pages/variant-icon-demo/variant-icon-demo.component')},
+            { path: 'weather', loadComponent: () => import('./features/uikit/pages/weather-demo/weather-demo.component')},
             { path: '', redirectTo: 'accordion', pathMatch: 'full'}
           ] 
     
