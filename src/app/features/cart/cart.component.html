@@ -1,1 +1,67 @@
-<p>cart works!</p>
+@if(cartService.cartIsEmpty()) {
+    <div class="text-center my-6">No Items in Cart</div>
+
+} @else {
+    <!-- TABLE RESUME CART -->
+    <div class="overflow-x-auto">
+        <table class="table">
+          <!-- head -->
+          <thead>
+            <tr>
+            <th>#</th>
+              <th>PRODUCT</th>
+              <th>DESCRIPTION</th>
+              <th>QUANTITY</th>
+              <th>COST</th>
+              <th>REMOVE</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of cartService.items(); track item.id) {
+                <tr>
+                    <th>{{$index + 1}}</th>
+                    <!-- PRODUCT -->
+                  <td>
+                    <div class="flex items-center gap-3">
+                      <div class="avatar">
+                        <div class="mask mask-squircle h-12 w-12">
+                          <img
+                            [src]="item.image"
+                            alt="Avatar Tailwind CSS Component" />
+                        </div>
+                      </div>
+                      <div>
+                        <div class="font-bold">{{item.name}}</div>
+                      </div>
+                    </div>
+                  </td>
+                  <!-- DESCRIPTION -->
+                  <td>
+                    <span class="badge badge-ghost badge-sm">{{item.description}}</span>
+                  </td>
+                  <!-- QUANTITY -->
+                  <td>1</td>
+                  <!-- COST -->
+                  <td>{{item.cost}}</td>
+  
+                  <!-- ACTION -->
+                  <td class="cursor-pointer" (click)="cartService.removeFromCart(item)">❌</td>
+                </tr>
+
+            }
+
+
+
+          </tbody>
+ 
+        </table>
+
+
+        <div class="text-xl my-6 flex justify-end">
+            TOTAL: € {{cartService.totalCartCosts()}}
+        </div>
+      </div>
+
+}
+
+

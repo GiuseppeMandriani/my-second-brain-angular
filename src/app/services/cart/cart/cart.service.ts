@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
 import { Product } from '../../../core/api/products/models/products-data.model';
 
 @Injectable({
@@ -6,7 +6,13 @@ import { Product } from '../../../core/api/products/models/products-data.model';
 })
 export class CartService {
 
-  items = signal<Product[]>([])
+  items = signal<Product[]>([]);
+  cartIsEmpty = computed(() => this.items().length === 0);
+  totalCartItems = computed(() => this.items().length);
+  totalCartCosts = computed(() => {
+    const total = this.items().reduce((acc, item) => acc + item.cost, 0);
+    return total.toFixed(2);
+  });
 
   constructor() { }
 
