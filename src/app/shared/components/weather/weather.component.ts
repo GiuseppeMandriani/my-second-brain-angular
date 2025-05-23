@@ -18,10 +18,10 @@ export class WeatherComponent {
   constructor() {
     effect(() => {
       if (!this.city()) return;
-      this.http.get<Meteo>(`https://api.openweathermap.org/data/2.5/weather?q=${this.city()}&units=metric&APPID=bc40800039891baee4dabd7cf4c00f66`)
-        .subscribe(res => {
-          this.meteo.set(res)
-        })
+      // this.http.get<Meteo>(`https://api.openweathermap.org/data/2.5/weather?q=${this.city()}&units=metric&APPID=`)
+      //   .subscribe(res => {
+      //     this.meteo.set(res)
+      //   })
     });
   }
 
