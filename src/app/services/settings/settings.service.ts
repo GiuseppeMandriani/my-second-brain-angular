@@ -27,15 +27,21 @@ export class SettingsService {
     
    }
 
-  setTitle(appTitle: string) {
-    this.config.update(cfg => ({ ...cfg, appTitle }))
+
+
+  setConfig<T extends keyof LocalConfig>(propName: T, value: LocalConfig[T]) {
+    this.config.update(cfg => ({ ...cfg, [propName]: value }))
   }
 
-  setColor(color: string) {
-    this.config.update(cfg => ({ ...cfg, color }))
-  }
+  // setTitle(appTitle: string) {
+  //   this.config.update(cfg => ({ ...cfg, appTitle }))
+  // }
 
-  setEnableShop(enableShop: boolean) {
-    this.config.update(cfg => ({ ...cfg, enableShop }))
-  }
+  // setColor(color: string) {
+  //   this.config.update(cfg => ({ ...cfg, color }))
+  // }
+
+  // setEnableShop(enableShop: boolean) {
+  //   this.config.update(cfg => ({ ...cfg, enableShop }))
+  // }
 }

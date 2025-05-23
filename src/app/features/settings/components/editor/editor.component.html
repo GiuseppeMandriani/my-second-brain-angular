@@ -5,7 +5,7 @@
     type="text"
     class="input input-bordered"
     #appTitle
-    (input)="settingsService.setTitle(appTitle.value)"
+    (input)="settingsService.setConfig('appTitle', appTitle.value)"
     [value]="settingsService.config().appTitle"
   >
     
@@ -13,7 +13,7 @@
       type="checkbox"
       class="toggle toggle-success"
       #enableShop
-      (input)="settingsService.setEnableShop(enableShop.checked)"
+      (input)="settingsService.setConfig('enableShop', enableShop.checked)"
       [checked]="settingsService.config().enableShop"
     >
   
@@ -21,7 +21,7 @@
     type="color"
     class="input input-bordered"
     #color
-    (input)="settingsService.setColor(color.value)"
+    (input)="settingsService.setConfig('color', color.value)"
     [value]="settingsService.config().color"
   >
 </div>
