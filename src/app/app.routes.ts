@@ -37,6 +37,7 @@ export const routes: Routes = [
         children: [
             { path: 'demo-1', loadComponent: () => import('./features/example/pages/demo-1/demo-1.component'), data: { title: 'Hello Demo 1'}},
             { path: 'demo-2', loadComponent: () => import('./features/example/pages/demo-2/demo-2.component'), data: { title: 'Hello Demo 2'}},
+            { path: 'demo-3', loadComponent: () => import('./features/example/pages/demo-3/demo-3.component'), data: { title: 'Hello Demo 3'}},
             { path: '', redirectTo: 'demo-1', pathMatch: 'full'}
           ] 
     

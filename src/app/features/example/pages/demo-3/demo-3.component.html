@@ -1,0 +1,58 @@
+<p>{{ title | uppercase }}</p>
+
+<h1 class="text-sky-400">Decorator defer, placeholder</h1>
+
+<hr class="my-3">
+
+<h1>Defer on interaction</h1>
+
+@defer (on interaction) {
+    <div class="bg-orange-600 p-5 my-3">
+        <h1>Defer on interaction</h1>
+  </div>
+} @placeholder {
+    <button>show</button>
+}
+
+<hr class="my-3">
+
+<h1>Defer on Timer</h1>
+
+@defer (on timer(5000)) {
+    <div class="bg-orange-600 p-5 my-3">
+        <h1>Defer on timer</h1>
+  </div>
+} @placeholder {
+    <div>Loading...</div>
+}
+
+<hr class="my-3">
+
+<h1>Defer with loading and error</h1>
+
+@defer (on interaction) {
+    <div>Esempio componente pesante</div>
+} @placeholder {
+    <button>Load List</button>
+} @loading {
+    <div>Rendering ...</div>
+} @error {
+    <div>Failed to load chunk</div>
+}
+
+<hr class="my-3">
+
+<h1>Defer on viewport</h1>
+
+<div 
+[style.height.px]="500"
+class="border-l-2 border-dashed border-black my-3 px-3"
+></div>
+
+@defer (on viewport) {
+    <div class="bg-orange-600 p-5 my-3">
+        <h1>Defer on viewport</h1>
+  </div>
+} @placeholder {
+  <div>placeholder here!</div>   
+}
