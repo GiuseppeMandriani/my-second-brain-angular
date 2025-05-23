@@ -35,7 +35,7 @@
     }
   ],
   "local-configs": {
-    "appTitle": "Angular shop ( Go to settings for Update)",
+    "appTitle": "Angular App (Go to setting for update)",
     "color": "#474266",
     "enableShop": true
   }

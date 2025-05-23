@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { SettingsService } from '../../../../services/settings/settings.service';
 import { JsonPipe } from '@angular/common';
 import { AppConfigService } from '../../../../core/api/app-configs/service/app-config.service';
@@ -9,7 +9,8 @@ import { TOAST_PRESETS } from '../../../../shared/configs/toasts/toasts.config';
   selector: 'app-editor',
   imports: [JsonPipe],
   templateUrl: './editor.component.html',
-  styleUrl: './editor.component.css'
+  styleUrl: './editor.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EditorComponent {
   settingsService = inject(SettingsService);
