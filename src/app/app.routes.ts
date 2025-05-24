@@ -14,6 +14,7 @@ export const routes: Routes = [
     { path: 'homepage', loadComponent: () => import('./features/home-page/home-page/home-page.component') },
     { path: 'cart', loadComponent: () => import('./features/cart/cart.component') },
     { path: 'settings', loadComponent: () => import('./features/settings/settings.component') },
+    { path: 'profile', loadComponent: () => import('./features/profile/profile.component') },
     { 
         path: 'landing-test', 
         loadComponent: () => import('./features//landing-test/landing-test/landing-test.component'), 

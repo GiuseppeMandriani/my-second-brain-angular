@@ -6,7 +6,7 @@
         [style.color]="settingsService.color()"
         >{{settingsService.appTitle()}}</a>
     </div>
-    <div class="flex-none">
+    <div class="flex gap-3">
       <div class="dropdown dropdown-end">
         <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
           <div class="indicator">
@@ -26,7 +26,14 @@
           </div>
         </div>
       </div>
-      <div class="dropdown dropdown-end">
+      <div>
+        <button routerLink="profile">profile</button>
+      </div>
+      <div>
+        <button>login</button>
+      </div>
+      <!-- LOGIN IMAGE -->
+      <!-- <div class="dropdown dropdown-end">
         <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
           <div class="w-10 rounded-full">
             <img
@@ -46,6 +53,6 @@
           <li><a routerLink="settings">Settings</a></li>
           <li><a>Logout</a></li>
         </ul>
-      </div>
+      </div> -->
     </div>
   </div>
