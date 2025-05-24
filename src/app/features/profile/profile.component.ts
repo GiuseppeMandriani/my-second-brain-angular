@@ -5,7 +5,7 @@ import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-profile',
-  imports: [AsyncPipe, JsonPipe],
+  imports: [JsonPipe],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
