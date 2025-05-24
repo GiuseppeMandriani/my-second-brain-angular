@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CartService } from '../../../services/cart/cart.service';
 import { RouterLink } from '@angular/router';
 import { SettingsService } from '../../../services/settings/settings.service';
+import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-navbar-2',
@@ -13,5 +14,7 @@ import { SettingsService } from '../../../services/settings/settings.service';
 export class Navbar2Component {
   cartService = inject(CartService);
   settingsService = inject(SettingsService);
+  auth = inject(AuthService)
+
 
 }

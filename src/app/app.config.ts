@@ -4,6 +4,7 @@ import { provideRouter, withComponentInputBinding, withViewTransitions } from '@
 import { routes } from './app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './core/auth/auth.interceptor';
+import { provideAuth0 } from '@auth0/auth0-angular';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -11,6 +12,13 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes, withComponentInputBinding(), withViewTransitions()), 
     provideHttpClient(
       withInterceptors([authInterceptor])
-    )
+    ),
+    provideAuth0({
+      domain: 'dev-o6xn1nikts522mpm.us.auth0.com',
+      clientId: 'rEKcOHJ9baX6LpXREoZaXv4x3wAGABPl',
+      authorizationParams: {
+        redirect_uri: window.location.origin
+      },
+    })
   ]
 };
