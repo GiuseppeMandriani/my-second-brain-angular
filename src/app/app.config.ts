@@ -23,7 +23,9 @@ export const appConfig: ApplicationConfig = {
         allowedList: [
           { uri: 'https://json-server-api-v7rs.onrender.com*'}
         ]
-      }
+      },
+      cacheLocation: 'localstorage', // 👈 persiste tra refresh
+      useRefreshTokens: true         // 👈 aggiorna automaticamente i token
       
     })
   ]
