@@ -4,14 +4,14 @@ import { provideRouter, withComponentInputBinding, withViewTransitions } from '@
 import { routes } from './app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './core/auth/auth.interceptor';
-import { provideAuth0 } from '@auth0/auth0-angular';
+import { authHttpInterceptorFn, provideAuth0 } from '@auth0/auth0-angular';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }), 
     provideRouter(routes, withComponentInputBinding(), withViewTransitions()), 
     provideHttpClient(
-      withInterceptors([authInterceptor])
+      withInterceptors([authInterceptor, authHttpInterceptorFn])
     ),
     provideAuth0({
       domain: 'dev-o6xn1nikts522mpm.us.auth0.com',
@@ -19,6 +19,12 @@ export const appConfig: ApplicationConfig = {
       authorizationParams: {
         redirect_uri: window.location.origin
       },
+      httpInterceptor: {
+        allowedList: [
+          { uri: 'https://json-server-api-v7rs.onrender.com*'}
+        ]
+      }
+      
     })
   ]
 };

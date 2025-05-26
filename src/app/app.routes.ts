@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './core/auth/auth.guard';
+import { authGuardFn } from '@auth0/auth0-angular';
 
 export const routes: Routes = [
     // { path: '', component: HomePageComponent },
@@ -11,10 +12,27 @@ export const routes: Routes = [
     // { path: 'demo2', loadComponent: () => import('./features/demo2/demo2.component').then(c => c.Demo2Component) },
 
     // Se nella classe del componente faccio export defautl posso non inserire il then
-    { path: 'homepage', loadComponent: () => import('./features/home-page/home-page/home-page.component') },
+    { 
+        path: 'homepage', 
+        loadComponent: () => import('./features/home-page/home-page/home-page.component'),
+        children: [
+            { path: 'home-landing', loadComponent: () => import('./features/home-page/home-page/pages/home-landig/home-landig.component')},
+            { path: 'home-user', loadComponent: () => import('./features/home-page/home-page/pages/home-user/home-user.component')},
+            { path: '', redirectTo: 'home-landing', pathMatch: 'full'}
+          ] 
+
+    },
     { path: 'cart', loadComponent: () => import('./features/cart/cart.component') },
-    { path: 'settings', loadComponent: () => import('./features/settings/settings.component') },
-    { path: 'profile', loadComponent: () => import('./features/profile/profile.component') },
+    { 
+        path: 'settings', 
+        loadComponent: () => import('./features/settings/settings.component'),
+        canActivate: [authGuardFn],
+    },
+    { 
+        path: 'profile', 
+        loadComponent: () => import('./features/profile/profile.component'),
+        canActivate: [authGuardFn],
+     },
     { 
         path: 'landing-test', 
         loadComponent: () => import('./features//landing-test/landing-test/landing-test.component'), 
