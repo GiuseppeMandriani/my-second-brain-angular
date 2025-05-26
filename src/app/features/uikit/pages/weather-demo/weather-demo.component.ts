@@ -5,7 +5,7 @@ import { WeatherComponent } from "../../../../shared/components/weather/weather.
   selector: 'app-weather-demo',
   imports: [WeatherComponent],
   templateUrl: './weather-demo.component.html',
-  styleUrl: './weather-demo.component.css'
+  styleUrl: './weather-demo.component.scss'
 })
 export default class WeatherDemoComponent {
   city = signal<string>('')

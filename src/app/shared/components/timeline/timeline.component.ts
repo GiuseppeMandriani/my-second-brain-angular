@@ -6,7 +6,7 @@ import { NgClass } from '@angular/common';
   selector: 'app-timeline',
   imports: [NgClass],
   templateUrl: './timeline.component.html',
-  styleUrl: './timeline.component.css'
+  styleUrl: './timeline.component.scss'
 })
 export class TimelineComponent {
   @Input() items: Item[] = [];

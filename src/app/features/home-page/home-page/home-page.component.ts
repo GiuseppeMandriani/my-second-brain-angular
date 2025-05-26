@@ -11,7 +11,7 @@ import { take } from 'rxjs';
   selector: 'app-home-page',
   imports: [RouterModule],
   templateUrl: './home-page.component.html',
-  styleUrl: './home-page.component.css'
+  styleUrl: './home-page.component.scss'
 })
 export default class HomePageComponent implements OnInit {
   public products = signal<Product[]>([]);

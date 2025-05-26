@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-home-landig',
   imports: [],
   templateUrl: './home-landig.component.html',
-  styleUrl: './home-landig.component.css'
+  styleUrl: './home-landig.component.scss'
 })
 export default class HomeLandigComponent {
 

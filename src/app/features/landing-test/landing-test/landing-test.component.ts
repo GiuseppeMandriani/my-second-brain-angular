@@ -48,7 +48,7 @@ const initialState: Product[] = [
   selector: 'app-landing-test',
   imports: [CommonModule, RouterModule, PhoneComponent, TimelineComponent, AccordionItemComponent, AlertComponent, DropdownComponent],
   templateUrl: './landing-test.component.html',
-  styleUrl: './landing-test.component.css'
+  styleUrl: './landing-test.component.scss'
 })
 export default class LandingTestComponent implements OnInit {
 

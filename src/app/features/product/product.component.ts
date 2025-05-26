@@ -5,7 +5,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
   selector: 'app-product',
   imports: [RouterLink],
   templateUrl: './product.component.html',
-  styleUrl: './product.component.css'
+  styleUrl: './product.component.scss'
 })
 export default class ProductComponent {
   // productId: string | undefined;

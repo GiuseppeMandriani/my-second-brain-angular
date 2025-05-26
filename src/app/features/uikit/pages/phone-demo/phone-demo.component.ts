@@ -5,7 +5,7 @@ import { PhoneComponent } from "../../../../shared/components/phone/phone.compon
   selector: 'app-phone-demo',
   imports: [PhoneComponent],
   templateUrl: './phone-demo.component.html',
-  styleUrl: './phone-demo.component.css'
+  styleUrl: './phone-demo.component.scss'
 })
 export default class PhoneDemoComponent {
   url = 'assets/images/soap-bubbles.jpg';

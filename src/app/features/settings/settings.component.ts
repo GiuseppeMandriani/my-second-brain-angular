@@ -6,7 +6,7 @@ import { PreviewComponent } from "./components/preview/preview.component";
   selector: 'app-settings',
   imports: [EditorComponent, PreviewComponent],
   templateUrl: './settings.component.html',
-  styleUrl: './settings.component.css',
+  styleUrl: './settings.component.scss',
 })
 export default class SettingsComponent {
 

@@ -8,7 +8,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
     RouterLink,
     RouterLinkActive],
   templateUrl: './example.component.html',
-  styleUrl: './example.component.css'
+  styleUrl: './example.component.scss'
 })
 export default class ExampleComponent {
 

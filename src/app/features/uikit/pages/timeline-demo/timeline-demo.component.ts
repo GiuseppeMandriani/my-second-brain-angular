@@ -6,7 +6,7 @@ import { Item } from '../../../../shared/components/timeline/model/timeline.mode
   selector: 'app-timeline-demo',
   imports: [TimelineComponent],
   templateUrl: './timeline-demo.component.html',
-  styleUrl: './timeline-demo.component.css'
+  styleUrl: './timeline-demo.component.scss'
 })
 export default class TimelineDemoComponent {
 

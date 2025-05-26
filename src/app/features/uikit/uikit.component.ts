@@ -8,7 +8,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
     RouterLink,
     RouterLinkActive],
   templateUrl: './uikit.component.html',
-  styleUrl: './uikit.component.css'
+  styleUrl: './uikit.component.scss'
 })
 export default class UikitComponent {
 

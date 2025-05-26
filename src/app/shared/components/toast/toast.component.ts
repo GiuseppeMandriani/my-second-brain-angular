@@ -7,7 +7,7 @@ import { NgClass } from '@angular/common';
   selector: 'app-toast',
   imports: [NgClass],
   templateUrl: './toast.component.html',
-  styleUrl: './toast.component.css'
+  styleUrl: './toast.component.scss'
 })
 export class ToastComponent {
   toasts = computed(() => this.toastService.toasts());

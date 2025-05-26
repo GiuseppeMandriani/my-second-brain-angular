@@ -10,7 +10,7 @@ import { SettingsService } from '../../../../../services/settings/settings.servi
   selector: 'app-home-user',
   imports: [JsonPipe],
   templateUrl: './home-user.component.html',
-  styleUrl: './home-user.component.css'
+  styleUrl: './home-user.component.scss'
 })
 export default class HomeUserComponent implements OnInit {
   settingsService = inject(SettingsService);

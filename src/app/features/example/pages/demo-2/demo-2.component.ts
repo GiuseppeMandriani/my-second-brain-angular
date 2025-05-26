@@ -19,7 +19,7 @@ import { TodosListComponent } from "./components/todos-list/todos-list.component
   selector: 'app-demo-2',
   imports: [UpperCasePipe, HttpErrorComponent, TodosSummaryComponent, TodosFormComponent, TodosListComponent],
   templateUrl: './demo-2.component.html',
-  styleUrl: './demo-2.component.css',
+  styleUrl: './demo-2.component.scss',
 })
 export default class Demo2Component implements OnInit {
   @Input() title = ''; // get data.title // NEW FROM ANGULAR 16 see app.config providerRoot

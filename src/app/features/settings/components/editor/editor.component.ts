@@ -9,7 +9,7 @@ import { TOAST_PRESETS } from '../../../../shared/configs/toasts/toasts.config';
   selector: 'app-editor',
   imports: [],
   templateUrl: './editor.component.html',
-  styleUrl: './editor.component.css',
+  styleUrl: './editor.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EditorComponent {

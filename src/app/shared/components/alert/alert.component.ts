@@ -6,7 +6,7 @@ import { VariantIconComponent } from "../variant-icon/variant-icon.component";
   selector: 'app-alert',
   imports: [NgClass, VariantIconComponent],
   templateUrl: './alert.component.html',
-  styleUrl: './alert.component.css'
+  styleUrl: './alert.component.scss'
 })
 export class AlertComponent {
   @Output() onCancel = new EventEmitter()

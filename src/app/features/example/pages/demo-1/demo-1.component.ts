@@ -17,7 +17,7 @@ type Post = {
   selector: 'app-demo-1',
   imports: [UpperCasePipe, JsonPipe],
   templateUrl: './demo-1.component.html',
-  styleUrl: './demo-1.component.css'
+  styleUrl: './demo-1.component.scss'
 })
 export default class Demo1Component {
   @Input() title = ''; // get data.title // NEW FROM ANGULAR 16 see app.config providerRoot

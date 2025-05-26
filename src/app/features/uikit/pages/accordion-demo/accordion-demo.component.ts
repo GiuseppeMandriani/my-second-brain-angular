@@ -5,7 +5,7 @@ import { AccordionItemComponent } from "../../../../shared/components/accordion-
   selector: 'app-accordion-demo',
   imports: [AccordionItemComponent],
   templateUrl: './accordion-demo.component.html',
-  styleUrl: './accordion-demo.component.css'
+  styleUrl: './accordion-demo.component.scss'
 })
 export default class AccordionDemoComponent {
 

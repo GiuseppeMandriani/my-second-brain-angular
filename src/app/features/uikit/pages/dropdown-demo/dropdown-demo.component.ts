@@ -5,7 +5,7 @@ import { DropDownItem, DropdownComponent } from '../../../../shared/components/d
   selector: 'app-dropdown-demo',
   imports: [DropdownComponent],
   templateUrl: './dropdown-demo.component.html',
-  styleUrl: './dropdown-demo.component.css'
+  styleUrl: './dropdown-demo.component.scss'
 })
 export default class DropdownDemoComponent {
 

@@ -6,7 +6,7 @@ import { Meteo } from './model/weather.model';
   selector: 'app-weather',
   imports: [],
   templateUrl: './weather.component.html',
-  styleUrl: './weather.component.css'
+  styleUrl: './weather.component.scss'
 })
 export class WeatherComponent {
   http = inject(HttpClient);

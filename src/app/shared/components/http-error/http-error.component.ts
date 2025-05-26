@@ -4,7 +4,7 @@ import { Component, Input } from '@angular/core';
   selector: 'app-http-error',
   imports: [],
   templateUrl: './http-error.component.html',
-  styleUrl: './http-error.component.css'
+  styleUrl: './http-error.component.scss'
 })
 export class HttpErrorComponent {
   @Input() msg: string = 'Errore';

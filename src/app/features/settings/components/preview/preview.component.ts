@@ -5,7 +5,7 @@ import { SettingsService } from '../../../../services/settings/settings.service'
   selector: 'app-preview',
   imports: [],
   templateUrl: './preview.component.html',
-  styleUrl: './preview.component.css',
+  styleUrl: './preview.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PreviewComponent {

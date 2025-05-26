@@ -5,7 +5,7 @@ import { CartService } from '../../services/cart/cart.service';
   selector: 'app-cart',
   imports: [],
   templateUrl: './cart.component.html',
-  styleUrl: './cart.component.css'
+  styleUrl: './cart.component.scss'
 })
 export default class CartComponent {
   cartService = inject(CartService);

@@ -10,7 +10,7 @@ export type DropDownItem = {
   selector: 'app-dropdown',
   imports: [NgClass],
   templateUrl: './dropdown.component.html',
-  styleUrl: './dropdown.component.css'
+  styleUrl: './dropdown.component.scss'
 })
 export class DropdownComponent {
   @Input() items: DropDownItem[] = [];

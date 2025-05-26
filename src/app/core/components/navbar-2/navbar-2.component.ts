@@ -10,7 +10,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
   selector: 'app-navbar-2',
   imports: [RouterLink],
   templateUrl: './navbar-2.component.html',
-  styleUrl: './navbar-2.component.css',
+  styleUrl: './navbar-2.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Navbar2Component {

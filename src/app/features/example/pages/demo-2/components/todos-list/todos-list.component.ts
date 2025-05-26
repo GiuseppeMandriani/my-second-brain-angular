@@ -7,7 +7,7 @@ import { Todo } from '../../../../../../core/api/todo/models/todo-data.model';
   imports: [NgClass],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './todos-list.component.html',
-  styleUrl: './todos-list.component.css'
+  styleUrl: './todos-list.component.scss'
 })
 export class TodosListComponent {
   @Input() todos: Todo[] = [];

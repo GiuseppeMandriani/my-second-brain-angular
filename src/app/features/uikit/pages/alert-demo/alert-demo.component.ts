@@ -5,7 +5,7 @@ import { AlertComponent } from "../../../../shared/components/alert/alert.compon
   selector: 'app-alert-demo',
   imports: [AlertComponent],
   templateUrl: './alert-demo.component.html',
-  styleUrl: './alert-demo.component.css'
+  styleUrl: './alert-demo.component.scss'
 })
 export default class AlertDemoComponent {
 

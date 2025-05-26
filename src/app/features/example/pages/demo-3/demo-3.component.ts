@@ -5,9 +5,10 @@ import { Component, Input } from '@angular/core';
   selector: 'app-demo-3',
   imports: [UpperCasePipe],
   templateUrl: './demo-3.component.html',
-  styleUrl: './demo-3.component.css'
+  styleUrl: './demo-3.component.scss'
 })
 export default class Demo3Component {
+  
   @Input() title = ''; // get data.title // NEW FROM ANGULAR 16 see app.config providerRoot
 
 }

@@ -9,7 +9,7 @@ import { ToastComponent } from "./shared/components/toast/toast.component";
   selector: 'app-root',
   imports: [CommonModule, RouterModule, NavbarComponent, Navbar2Component, ToastComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {
 

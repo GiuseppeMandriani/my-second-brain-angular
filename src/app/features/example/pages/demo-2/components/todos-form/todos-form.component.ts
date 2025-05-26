@@ -6,7 +6,7 @@ import { Todo } from '../../../../../../core/api/todo/models/todo-data.model';
   imports: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './todos-form.component.html',
-  styleUrl: './todos-form.component.css'
+  styleUrl: './todos-form.component.scss'
 })
 export class TodosFormComponent {
   @Output() addTodo = new EventEmitter<HTMLInputElement>();
