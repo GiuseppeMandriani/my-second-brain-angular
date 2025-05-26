@@ -1,26 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+@use './style/variable' as *;
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 @plugin "daisyui";
-
-$nero-vinile: #2C2C2C;
-$crema-polaroid: #F5E1C8;
-$rosso-retro: #9E2A2B;
-$verde-oliva: #6A7F60;
-$blu-petrolio: #2F4858;
-$marrone-mogano: #704214;
-$giallo-senape: #D4A537;
-
-:root {
-  --nero-vinile: #2C2C2C;
-  --crema-polaroid: #F5E1C8;
-  --rosso-retro: #9E2A2B;
-  --verde-oliva: #6A7F60;
-  --blu-petrolio: #2F4858;
-  --marrone-mogano: #704214;
-  --giallo-senape: #D4A537;
-}
 
 
 html, body { height: 100%; }

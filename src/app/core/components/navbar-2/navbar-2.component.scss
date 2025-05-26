@@ -1,0 +1,81 @@
+@use '../../../../style/variable' as *;
+
+// Stili per la navbar rétro con palette personalizzata
+// .navbar {
+//   background-color: var(--crema-polaroid);
+//   color: var(--nero-vinile);
+//   @apply shadow-sm;
+
+//   .btn-ghost {
+//     color: $rosso-retro;
+//     font-weight: bold;
+
+//     &:hover {
+//       background-color: $giallo-senape;
+//       color: $nero-vinile;
+//     }
+//   }
+
+//   .dropdown {
+//     .btn-circle {
+//       background-color: transparent;
+
+//       svg {
+//         stroke: $blu-petrolio;
+//       }
+
+//       .indicator-item {
+//         background-color: $rosso-retro;
+//         color: white;
+//       }
+//     }
+
+//     .dropdown-content {
+//       background-color: var(--crema-polaroid);
+//       color: var(--nero-vinile);
+
+//       .card-body {
+//         .text-info {
+//           color: $blu-petrolio;
+//         }
+
+//         .btn-primary {
+//           background-color: $rosso-retro;
+//           color: white;
+
+//           &:hover {
+//             background-color: darken($rosso-retro, 10%);
+//           }
+//         }
+//       }
+
+//       .menu {
+//         a {
+//           &:hover {
+//             background-color: $giallo-senape;
+//             color: $nero-vinile;
+//           }
+
+//           .badge {
+//             background-color: $verde-oliva;
+//             color: white;
+//           }
+//         }
+//       }
+//     }
+//   }
+
+//   .avatar img {
+//     border: 2px solid $marrone-mogano;
+//   }
+
+//   // Login Button (guest user)
+//   .btn:not(.btn-ghost):not(.btn-primary) {
+//     background-color: $blu-petrolio;
+//     color: white;
+
+//     &:hover {
+//       background-color: darken($blu-petrolio, 10%);
+//     }
+//   }
+// }
