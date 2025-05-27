@@ -1,0 +1,1 @@
+import{Sa as t,lb as a,mb as m,xb as i}from"./chunk-72W4SQTP.js";var n=class o{static \u0275fac=function(e){return new(e||o)};static \u0275cmp=t({type:o,selectors:[["app-home-landig"]],decls:2,vars:0,template:function(e,s){e&1&&(a(0,"p"),i(1,"home-landig works!"),m())},encapsulation:2})};export{n as default};

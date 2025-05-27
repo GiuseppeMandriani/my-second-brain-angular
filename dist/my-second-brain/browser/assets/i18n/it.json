@@ -1,0 +1,5 @@
+{
+    "HELLO": "Ciao",
+    "WELCOME": "Benvenuto nell'app",
+    "SHARED:WELCOME_USER": "Benvenuto nell'app {{userName}}"
+  }
