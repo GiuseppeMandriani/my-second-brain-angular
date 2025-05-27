@@ -1,1 +1,22 @@
-<p>my-todos works!</p>
+<div class="centered-page sm flex flex-col gap-3">
+    <h1 class="page-title">Todo List nickname: {{nickName()}}</h1>
+  
+    @if(error()) {
+      <app-http-error [msg]="'Server Error'"></app-http-error>
+    }
+  
+    <!--RECAP-->
+    <app-todos-summary [completed]="totalCompleted()" [todos]="totalTodos()"></app-todos-summary>
+  
+    <!--Form-->
+    <app-todos-form (addTodo)="addTodo($event)"></app-todos-form>
+  
+  
+    <!--List-->
+    <app-todos-list 
+      [todos]="todos()"
+      (toggleTodo)="toggleTodo($event)"
+      (deleteTodo)="removeTodo($event)"
+      
+      ></app-todos-list>
+  </div>

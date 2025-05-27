@@ -5,6 +5,7 @@ import { NavbarComponent } from "./core/components/navbar/navbar.component";
 import { Navbar2Component } from "./core/components/navbar-2/navbar-2.component";
 import { ToastComponent } from "./shared/components/toast/toast.component";
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-root',
@@ -14,11 +15,12 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 })
 export class AppComponent {
 
-  public isAppOne: boolean = true;
+  public isAppOne: boolean = false;
   public currentLang: string = 'it'; // La lingua predefinita
 
 
   constructor(
+    private auth: AuthService,
     router: Router,
     private translateService: TranslateService) {
       this.translateService.addLangs(['it', 'en']);
@@ -34,6 +36,15 @@ export class AppComponent {
   }
 
   ngOnInit() {
+    this.auth.isAuthenticated$.subscribe((isAuthenticated) => {
+      if (isAuthenticated) {
+        this.auth.getAccessTokenSilently().subscribe((token) => {
+          if (token) {
+            localStorage.setItem('token', token); // 🔑 Salvataggio manuale
+          }
+        });
+      }
+    });
     // Imposta la lingua predefinita
     this.translateService.setDefaultLang(this.currentLang);
     // Carica la lingua (puoi cambiare tra le lingue disponibili)
