@@ -62,5 +62,10 @@ export const routes: Routes = [
           ] 
     
     },
+    { 
+        path: 'my-todos', 
+        loadComponent: () => import('./features/my-todos/my-todos.component'),
+        canActivate: [authGuardFn],
+     },
     { path: '', redirectTo: 'homepage', pathMatch: 'full'}
 ];

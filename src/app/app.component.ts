@@ -14,7 +14,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 })
 export class AppComponent {
 
-  public isAppOne: boolean = false;
+  public isAppOne: boolean = true;
   public currentLang: string = 'it'; // La lingua predefinita
 
 
