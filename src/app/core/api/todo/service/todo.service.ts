@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { API_URLS } from '../../base/constants/base-api-config.token';
 import { Observable } from 'rxjs';
 import { ITodoResponse } from '../models/todo-response.model';
-import { IInsertTodoRequest, ITodoByIdRequest, ITodoUpdateRequest } from '../models/todo-request.model';
+import { IInsertTodoRequest, ITodoByIdRequest, ITodoByNicknameRequest, ITodoUpdateRequest } from '../models/todo-request.model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +22,12 @@ export class TodoService extends BaseApiService {
   // GET /local-todos
   public getTodo(): Observable<ITodoResponse[]> {
     return this._get<ITodoResponse[]>(this.relativeEndpoint);
+  }
+
+  // GET /local-todos/{id}:
+  public getTodosByNickname(request: ITodoByNicknameRequest): Observable<ITodoResponse[]> {
+    const _urlPattern = `${this.relativeEndpoint}?nickname=${request.nickname}`;
+    return this._get<ITodoResponse[]>(_urlPattern, request);
   }
 
   // DELETE /local-todos/{id}

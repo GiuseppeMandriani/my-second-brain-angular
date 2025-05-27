@@ -16,7 +16,7 @@ import { AuthService } from '@auth0/auth0-angular';
   styleUrl: './my-todos.component.css'
 })
 export default class MyTodosComponent {
-  todos = signal<Todo[]>([]);
+  // todos = signal<Todo[]>([]);
   http = inject(HttpClient);
   error = signal<boolean>(false);
 
@@ -27,9 +27,13 @@ export default class MyTodosComponent {
     return `${this.user()?.nickname}`
   })
 
-  userTodos = computed(() => {
-    return this.todos().filter(todo => todo.nickname === this.nickName());
-  });
+  userTodos = signal<Todo[]>([]);
+
+  // userTodos = computed(() => {
+  //   return this.todos().filter(todo => todo.nickname === this.nickName());
+  // });
+
+  // nicknameTodos = signal<Todo[]>([]);
 
   totalCompleted = computed(
     () => this.userTodos().filter((t) => t.completed).length
@@ -41,9 +45,9 @@ export default class MyTodosComponent {
   ngOnInit(): void {
     // METODO CON SIGNALS E SERVICE
 
-    this.toDoService.getTodo().subscribe({
+    this.toDoService.getTodosByNickname({nickname: this.nickName()}).subscribe({
       next: (res) => {
-        this.todos.set(res);
+        this.userTodos.set(res);
       },
       error: (err) => {
         console.error('Error fetching todos:', err);
@@ -64,10 +68,11 @@ export default class MyTodosComponent {
       .addTodo({
         title: input.value,
         completed: false,
+        nickname: this.nickName()
       })
       .subscribe({
         next: (newTodo: Todo) => {
-          this.todos.update((prevTodos) => [...prevTodos, newTodo]);
+          this.userTodos.update((prevTodos) => [...prevTodos, newTodo]);
         },
         error: (err) => {
           console.error('Error fetching todos:', err);
@@ -85,7 +90,7 @@ export default class MyTodosComponent {
     if (toDoToRemove && toDoToRemove.id) {
       this.toDoService.deleteTodo({ id: toDoToRemove.id }).subscribe({
         next: () => {
-          this.todos.update((prevTodos) =>
+          this.userTodos.update((prevTodos) =>
             prevTodos.filter((todo) => todo.id !== toDoToRemove.id)
           );
         },
@@ -106,7 +111,7 @@ export default class MyTodosComponent {
         completed: !todoToToggle.completed
       }).subscribe({
         next: (res) => {
-          this.todos.update((todos) => {
+          this.userTodos.update((todos) => {
             return todos.map((t) => (t.id === todoToToggle.id ? res : t));
           });
         },
@@ -119,7 +124,7 @@ export default class MyTodosComponent {
   }
 
   saveAll() {
-    console.log(this.todos);
+    console.log(this.userTodos);
   }
 
 }

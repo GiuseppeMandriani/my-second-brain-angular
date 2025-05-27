@@ -14,7 +14,7 @@
   
     <!--List-->
     <app-todos-list 
-      [todos]="todos()"
+      [todos]="userTodos()"
       (toggleTodo)="toggleTodo($event)"
       (deleteTodo)="removeTodo($event)"
       
