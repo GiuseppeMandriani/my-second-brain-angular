@@ -17,7 +17,6 @@ export class AppComponent {
   public isAppOne: boolean = false;
   public currentLang: string = 'it'; // La lingua predefinita
 
-  public test = 'WELCOME' 
 
   constructor(
     router: Router,

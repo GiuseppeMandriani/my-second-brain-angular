@@ -1,28 +1,30 @@
-    <div class="flex gap-6 justify-center">
-        @for (product of products(); track product.id) {
-            <div class="card w-full bg-base-100 shadow-xl">
-                <figure><img [src]="product.image" [alt]="product.name" /></figure>
-                <div class="card-body">
-                    <div class="flex justify-between">
-                      <h2 class="card-title">{{product.name}}</h2>
-                      <div class="card-title">€ {{product.cost}}</div>
-                    </div>
-                    <p>{{product.description}}</p>
-                    <div class="card-actions justify-end">
-                        @if(settingsService.isShopEnabled()) {
-                            <button class="btn btn-primary"
-                            (click)="cartService.addToCart(product)">
-                                Add to Cart
-                            </button>
-                        }
 
-                    </div>
-                </div>
-            </div>
+<h1>{{homeUserLabel()}}</h1>
+<div class="flex gap-6 justify-center">
+  @for (product of products(); track product.id) {
+  <div class="card w-full bg-base-100 shadow-xl">
+    <figure><img [src]="product.image" [alt]="product.name" /></figure>
+    <div class="card-body">
+      <div class="flex justify-between">
+        <h2 class="card-title">{{ product.name }}</h2>
+        <div class="card-title">€ {{ product.cost }}</div>
+      </div>
+      <p>{{ product.description }}</p>
+      <div class="card-actions justify-end">
+        @if(settingsService.isShopEnabled()) {
+        <button
+          class="btn btn-primary"
+          (click)="cartService.addToCart(product)"
+        >
+          Add to Cart
+        </button>
         }
       </div>
+    </div>
+  </div>
+  }
+</div>
 
-      <hr class="my-3" />
-      
+<hr class="my-3" />
 
-      <pre>{{cartItems() | json}}</pre>
+<pre>{{ cartItems() | json }}</pre>
